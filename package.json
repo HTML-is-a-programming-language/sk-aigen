@@ -1,0 +1,15 @@
+{
+    "name": "sk-aigen-portfolio",
+    "private": true,
+    "version": "0.1.0",
+    "description": "SK AIGEN 지원용 인쇄 우선 PDF 포트폴리오",
+    "type": "module",
+    "scripts": {
+        "dev": "http-server site -p 4173 -c-1",
+        "pdf": "node scripts/export-pdf.mjs"
+    },
+    "devDependencies": {
+        "http-server": "^14.1.1",
+        "playwright": "^1.56.1"
+    }
+}
