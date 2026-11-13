@@ -19,9 +19,29 @@ jobs:
         steps:
             - name: Checkout source
               uses: actions/checkout@v4
+            - name: Set up pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - name: Install dependencies
+              run: pnpm install --no-frozen-lockfile
+            - name: Install Chromium and Korean font
+              run: |
+                  pnpm exec playwright install --with-deps chromium
+                  sudo apt-get update
+                  sudo apt-get install -y fonts-noto-cjk
+            - name: Generate PDF from source
+              run: |
+                  pnpm pdf
+                  mkdir -p site/downloads
+                  cp exports/sk-aigen-portfolio.pdf site/downloads/sk-aigen-portfolio.pdf
             - name: Configure Pages
               uses: actions/configure-pages@v5
-            - name: Upload static site
+            - name: Upload static site and PDF
               uses: actions/upload-pages-artifact@v3
               with:
                   path: ./site
