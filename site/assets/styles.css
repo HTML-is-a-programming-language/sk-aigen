@@ -1,0 +1,132 @@
+/* SK AIGEN portfolio — single-source design for browser and A4 PDF */
+:root {
+    color-scheme: dark;
+    --ink: #0d1e22;
+    --paper: #f7f6ef;
+    --muted: #9eabb0;
+    --accent: #d7f184;
+    --page-scale: 1;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+    min-height: 100vh;
+    background: #1b292d;
+    color: var(--paper);
+    font-family: "Pretendard", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.screen-toolbar {
+    height: 72px;
+    margin: 0 auto;
+    max-width: 1180px;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    padding: 0 20px;
+    letter-spacing: .09em;
+    font-size: 12px;
+}
+.toolbar-mark { display:flex; align-items:center; gap: 9px; color: #f5f8e7; font-weight: 700; }
+.toolbar-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.toolbar-help { margin-left: auto; color: #b1bdbe; font-size: 10px; }
+.print-button { border: 1px solid #b5c4aa; border-radius: 6px; background: transparent; color: #eff5d5; padding: 11px 16px; font: inherit; letter-spacing: 0; cursor: pointer; }
+.print-button:hover { background: #d7f184; color: #0d1e22; }
+#portfolio { margin: 0 auto 60px; }
+.page-wrap {
+    position: relative;
+    margin: 0 auto;
+    width: calc(297mm * var(--page-scale));
+    height: calc(210mm * var(--page-scale));
+}
+.page {
+    position: relative;
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    transform-origin: left top;
+    transform: scale(var(--page-scale));
+    break-after: page;
+    page-break-after: always;
+}
+.cover { background: var(--ink); }
+.cover-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .2;
+    pointer-events: none;
+    background-image: linear-gradient(90deg, transparent calc(100% - 1px), #40616a calc(100% - 1px)), linear-gradient(0deg, transparent calc(100% - 1px), #40616a calc(100% - 1px));
+    background-size: 20mm 20mm;
+    mask-image: linear-gradient(90deg, transparent 27%, black 100%);
+}
+.cover::before { content: ""; position: absolute; top: -62mm; left: 114mm; width: 135mm; height: 135mm; border-radius: 50%; background: radial-gradient(circle, #34554d55, #10262a00 72%); }
+.cover::after { content: ""; position: absolute; right: -30mm; bottom: -62mm; width: 180mm; height: 145mm; border-radius: 50%; background: radial-gradient(circle, #344c4260, #10262a00 69%); }
+.cover-header, .hero, .cover-footer, .figure { position: absolute; z-index: 1; }
+.cover-header { left: 19mm; right: 19mm; top: 15.5mm; height: 14mm; display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid #6f898956; }
+.brand { display: flex; align-items:center; gap: 4mm; white-space: nowrap; flex-shrink:0; }
+.brand-glyph { display:block; width:17mm; white-space:nowrap; font-family: Arial, sans-serif; font-weight: 800; font-size: 7.2mm; letter-spacing: -.09em; line-height: 1; }
+.slash { color: var(--accent); padding: 0 .4mm; }
+.brand-divider { width: .2mm; height: 8mm; background: #708889; opacity: .65; }
+.brand-caption { font-family: Arial, sans-serif; font-size: 2.45mm; color: #bac7c4; line-height: 1.45; font-weight: 700; letter-spacing: .17em; }
+.edition { display:block; flex-shrink:0; white-space:nowrap; margin-top: 3mm; font-family: "Pretendard", "Noto Sans CJK KR", sans-serif; font-size: 3.05mm; font-weight: 700; letter-spacing: .14em; }
+.edition-ring { display:inline-block; vertical-align:middle; margin-right:2.2mm; width: 2.2mm; height: 2.2mm; border: .6mm solid var(--accent); border-radius: 50%; }
+.edition-sep { color: #66847d; }
+.hero { left: 19mm; top: 45.5mm; width: 169mm; }
+.eyebrow { display:flex; align-items:center; gap: 3mm; font-family: Arial, sans-serif; font-size: 3.05mm; letter-spacing: .19em; font-weight: 700; color: var(--accent); }
+.eyebrow-rule { width: 11mm; height: .55mm; background: var(--accent); }
+.hero h1 { margin: 8mm 0 0; font-size: 12.4mm; line-height: 1.38; font-weight: 700; letter-spacing: -.058em; word-break: keep-all; }
+.headline-accent { color: var(--accent); }
+.period { color: #f5f8ee; }
+.hero-desc { margin: 9.7mm 0 0; color: #bfcbc7; font-size: 4.05mm; line-height: 1.82; letter-spacing: -.025em; font-weight: 400; }
+.figure { top: 44mm; right: 17.5mm; width: 99mm; height: 119mm; border: 1px solid #5a76765c; background: linear-gradient(145deg, #1a3030bd, #1025276b); overflow: hidden; }
+.figure-top { position:absolute; top: 5.6mm; left: 6mm; right: 6mm; display:flex; justify-content:space-between; color: #a7c1b1; font: 700 2.5mm Arial, sans-serif; letter-spacing:.10em; }
+.figure-top span:last-child { color: var(--accent); letter-spacing:.19em; }
+.figure-line { position:absolute; height: 1px; background: #6a9c8d4f; width: 107mm; transform-origin: center; left:-4mm; top: 61mm; }
+.figure-line-1 { transform: rotate(37deg); }
+.figure-line-2 { transform: rotate(-37deg); }
+.orbit { position:absolute; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%, -50%); border: 1px solid #819e8f3f; }
+.orbit-a { width: 49mm; height: 49mm; }
+.orbit-b { width: 75mm; height: 75mm; border-style: dashed; border-color:#91a98b67; }
+.orbit-c { width: 101mm; height: 101mm; border-color:#6e988743; }
+.orbit-cross { position:absolute; background: #85aa9933; }
+.orbit-cross-x { width: 101mm; height: 1px; left: 0; top: 59.5mm; }
+.orbit-cross-y { width: 1px; height: 110mm; left: 49.5mm; top: 9mm; }
+.center-node { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width: 36.5mm; height:36.5mm; border:1px solid #d7f1848d; border-radius:50%; background: #d7f184; color:#0d1e22; display:flex; align-items:center; flex-direction:column; justify-content:center; box-shadow: 0 0 0 2mm #d7f1840e; }
+.center-mark { font-family:Arial,sans-serif; font-size: 8.1mm; line-height: .9; font-weight: 500; }
+.center-text { margin-top: 2mm; font: 800 2.4mm/1.35 Arial,sans-serif; text-align: center; letter-spacing: .055em; }
+.step { position:absolute; display:flex; flex-direction:column; gap:1.1mm; padding:3.3mm 3.5mm; min-width:30mm; background:#1b3431; border:1px solid #66867b92; }
+.step-one { left:6mm; top:26mm; }
+.step-two { right:5mm; top:26mm; }
+.step-three { left:7.3mm; bottom:19mm; }
+.step-count { font:800 2.1mm Arial,sans-serif; color:var(--accent); letter-spacing:.09em; }
+.step-title { color:#f5f7ec; font-weight:700; font-size:3.8mm; letter-spacing:-.025em; }
+.step-sub { font:600 1.85mm Arial,sans-serif; letter-spacing:.065em; color:#8eaaa1; }
+.figure-bottom { position:absolute; bottom: 5.4mm; right: 5.5mm; color:#9bb3ac; font:700 2.5mm Arial,sans-serif; letter-spacing:.13em; }
+.figure-bottom span { color:var(--accent); }
+.cover-footer { left:19mm; right:19mm; bottom:17.6mm; height:21mm; border-top:1px solid #78928b68; display:flex; justify-content:space-between; align-items:flex-end; padding-top:4.4mm; }
+.footer-identity { min-width: 100mm; }
+.identity-name { font-size: 7.1mm; font-weight: 700; line-height: 1.2; letter-spacing: -.04em; }
+.identity-en { font:600 2.85mm Arial,sans-serif; color:#adbdba; letter-spacing:.17em; margin-left:2.6mm; }
+.identity-role { color:#9fadab; font:500 3.1mm Arial,sans-serif; letter-spacing:.055em; margin-top:2.5mm; }
+.identity-role span { color: var(--accent); margin:0 .4mm; }
+.footer-contact { display:flex; flex-direction:column; gap:1.7mm; align-self:end; padding-bottom:1.1mm; }
+.contact-label { color:var(--accent); font:800 2.3mm Arial,sans-serif; letter-spacing:.18em; }
+.contact-value { color:#b2c2bc; font:500 2.85mm Arial,sans-serif; letter-spacing:.005em; }
+.footer-year { font:700 5.6mm Arial,sans-serif; color:var(--paper); text-align:right; line-height:.9; }
+.footer-year span { font:600 2.2mm Arial,sans-serif; letter-spacing:.1em; color:#98aaa6; }
+.corner-number { position:absolute; top:32.5mm; right:18mm; font:700 2.4mm Arial,sans-serif; color:#879c91; letter-spacing:.07em; }
+.cover-edge { position:absolute; z-index:2; left:0; top:0; width:1.8mm; height:100%; background:var(--accent); }
+@media print {
+    @page { size: A4 landscape; margin: 0; }
+    html, body { margin:0!important; padding:0!important; background:transparent!important; print-color-adjust: exact; -webkit-print-color-adjust:exact; }
+    .screen-toolbar { display:none!important; }
+    #portfolio { margin:0!important; }
+    .page-wrap { width:297mm!important; height:210mm!important; margin:0!important; }
+    .page { transform:none!important; width:297mm!important; height:210mm!important; }
+    .page:last-child { break-after:auto; page-break-after:auto; }
+}
+@media screen and (max-width:650px) {
+    .screen-toolbar { height:62px; padding:0 18px; }
+    .toolbar-help { display:none; }
+    .print-button { margin-left:auto; }
+}
