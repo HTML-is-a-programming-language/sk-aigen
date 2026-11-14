@@ -266,6 +266,22 @@
 .dark-keywords span { background: #244c4b; color: #d7ecb5; border-color: #5a897a; }
 .horizon-box { flex: none; display: grid; grid-template-columns: 44mm 1fr; align-items: center; gap: 5mm; margin-top: 6mm; padding: 5mm 6mm; background: #e4ede4; border-radius: 2mm; border-left: 1mm solid #5ca88f; }
 .horizon-box p { margin: 0; color: #416764; font-size: 3.1mm; line-height: 1.6; }
+/* Dense evidence pages: smaller spacing keeps explanations wholly inside A4. */
+#page-05 .deeper-grid .panel { padding: 4mm; }
+#page-05 .deeper-grid .panel h3 { font-size: 4.05mm; margin: 1.6mm 0 2mm; line-height: 1.29; }
+#page-05 .case-row { padding: 1.25mm 0; grid-template-columns: 12mm auto; gap: 2mm; }
+#page-05 .case-row p { font-size: 2.52mm; line-height: 1.47; }
+#page-05 .case-row > span { font-size: 2.5mm; }
+#page-05 .thin-stats { margin: 2mm 0; gap: 2mm; }
+#page-05 .thin-stats > div { padding: 2.4mm; gap: .7mm; }
+#page-05 .thin-stats b { font-size: 6.2mm; }
+#page-05 .thin-stats span { font-size: 2.4mm; line-height: 1.26; }
+#page-05 .body-sm { font-size: 2.63mm; line-height: 1.5; }
+#page-05 .caution.on-dark { font-size: 2.25mm; line-height: 1.4; padding-top: 2mm; margin-top: 2mm; }
+#page-11 .operations-grid .panel { padding: 5.5mm; }
+#page-11 .ops-flow { margin: 2.8mm 0; }
+#page-11 .ops-flow div { padding: 3mm; }
+#page-11 .caution.on-dark { margin-top: 2.3mm; padding-top: 2mm; font-size: 2.38mm; line-height: 1.48; }
 /* closing */
 .link-grid { flex: 1; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(2,minmax(0,1fr)); gap: 4mm; }
 .link-item { background: #16383a; border: 1px solid #66877866; padding: 5.5mm; border-radius: 2.8mm; display: flex; flex-direction: column; min-height: 0; }
