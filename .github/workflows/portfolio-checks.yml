@@ -1,0 +1,55 @@
+name: Validate portfolio pages and PDF
+
+on:
+    pull_request:
+        paths:
+            - "site/**"
+            - "scripts/**"
+            - "package.json"
+            - ".github/workflows/portfolio-checks.yml"
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    layout-and-pdf:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - name: Install dependencies and Korean font
+              run: |
+                  pnpm install --no-frozen-lockfile
+                  sudo apt-get update -qq
+                  sudo apt-get install -y fonts-noto-cjk poppler-utils
+                  pnpm exec playwright install --with-deps chromium
+            - name: Render every page with strict layout checks
+              env:
+                  STRICT_PORTFOLIO_LAYOUT: "1"
+              run: pnpm pdf
+            - name: Validate PDF page count and key text
+              run: |
+                  set -euo pipefail
+                  pages="$(pdfinfo exports/sk-aigen-portfolio.pdf | awk '/^Pages:/ {print $2}')"
+                  echo "Rendered PDF pages: $pages"
+                  test "$pages" -eq 14
+                  pdftotext exports/sk-aigen-portfolio.pdf exports/portfolio-text.txt
+                  for term in "CareFlow AI" "SurveyLens" "LectureForge" "BeautyRanks" "서승준" "SK AIGEN"; do
+                      grep -q "$term" exports/portfolio-text.txt
+                  done
+            - name: Keep PDF and visual regression thumbnails
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: aigen-portfolio-pdf-previews
+                  path: |
+                      exports/*.pdf
+                      exports/*.png
+                  if-no-files-found: warn
+                  retention-days: 14
