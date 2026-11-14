@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="./assets/editorial.css">
 </head>
 <body>
-    <div class="screen-toolbar">
-        <div class="toolbar-mark"><span class="toolbar-dot"></span> SK AIGEN / PORTFOLIO</div>
-        <div class="toolbar-help">A4 LANDSCAPE · 14 PAGES · WEB / PDF</div>
-        <button type="button" id="printBtn" class="print-button">PDF로 저장 <span aria-hidden="true">↗</span></button>
-    </div>
     <main id="portfolio" aria-label="SK AIGEN 포트폴리오">
         <div class="page-wrap">
             <article class="page cover" aria-label="1페이지: 포트폴리오 표지">
@@ -76,7 +71,6 @@
                         mount.innerHTML = '<div class="load-error" role="alert">포트폴리오 본문을 불러올 수 없습니다. 다시 새로고침하거나 PDF를 확인해 주세요.</div>';
                     });
             }
-            document.getElementById('printBtn').addEventListener('click', () => window.print());
         })();
     </script>
 </body>
