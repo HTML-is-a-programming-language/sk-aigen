@@ -39,6 +39,8 @@ jobs:
                   pnpm pdf
                   mkdir -p site/downloads
                   cp exports/sk-aigen-portfolio.pdf site/downloads/sk-aigen-portfolio.pdf
+            - name: Pre-render complete static site
+              run: pnpm build:site
             - name: Configure Pages
               uses: actions/configure-pages@v5
             - name: Upload static site and PDF
