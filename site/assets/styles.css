@@ -53,7 +53,7 @@ body {
 .edition-ring { display:inline-block; vertical-align:middle; margin-right:2.2mm; width: 2.2mm; height: 2.2mm; border: .6mm solid var(--accent); border-radius: 50%; }
 .edition-sep { color: #66847d; }
 .hero { left: 19mm; top: 45.5mm; width: 169mm; }
-.eyebrow { display:block; font-family: Arial, sans-serif; font-size: 3.05mm; letter-spacing: .19em; font-weight: 700; color: var(--accent); }
+.eyebrow { display:block; font-family: "Pretendard", "Noto Sans CJK KR", sans-serif; font-size: 3.05mm; letter-spacing: .06em; font-weight: 700; color: var(--accent); }
 .hero h1 { margin: 8mm 0 0; font-size: 12.4mm; line-height: 1.38; font-weight: 700; letter-spacing: -.058em; word-break: keep-all; }
 .headline-accent { color: var(--accent); }
 .period { color: #f5f8ee; }
@@ -73,9 +73,9 @@ body {
 .center-node { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width: 36.5mm; height:36.5mm; border:1px solid #d7f1848d; border-radius:50%; background: #d7f184; color:#0d1e22; display:flex; align-items:center; flex-direction:column; justify-content:center; box-shadow: 0 0 0 2mm #d7f1840e; }
 .center-text { margin: 0; font: 800 2.7mm/1.35 Arial,sans-serif; text-align: center; letter-spacing: .04em; }
 .step { position:absolute; display:flex; flex-direction:column; gap:1.1mm; padding:3.3mm 3.5mm; min-width:30mm; background:#1b3431; border:1px solid #66867b92; }
-.step-one { left:6mm; top:26mm; }
-.step-two { right:5mm; top:26mm; }
-.step-three { left:7.3mm; bottom:19mm; }
+.step-one { left:50%; top:16mm; transform:translateX(-50%); }
+.step-two { left:6mm; bottom:19mm; }
+.step-three { right:5mm; bottom:19mm; }
 .step-count { font:800 2.1mm Arial,sans-serif; color:var(--accent); letter-spacing:.09em; }
 .step-title { color:#f5f7ec; font-weight:700; font-size:3.8mm; letter-spacing:-.025em; }
 .step-sub { font:600 1.85mm Arial,sans-serif; letter-spacing:.065em; color:#8eaaa1; }
@@ -85,7 +85,7 @@ body {
 .footer-identity { min-width: 100mm; }
 .identity-name { font-size: 7.1mm; font-weight: 700; line-height: 1.2; letter-spacing: -.04em; }
 .identity-en { font:600 2.85mm Arial,sans-serif; color:#adbdba; letter-spacing:.17em; margin-left:2.6mm; }
-.identity-role { color:#9fadab; font:500 3.1mm Arial,sans-serif; letter-spacing:.055em; margin-top:2.5mm; }
+.identity-role { color:#9fadab; font:600 3.1mm "Pretendard","Noto Sans CJK KR",sans-serif; letter-spacing:.04em; margin-top:2.5mm; }
 .identity-role span { color: var(--accent); margin:0 .4mm; }
 .footer-contact { display:flex; flex-direction:column; gap:1.7mm; align-self:end; padding-bottom:1.1mm; }
 .contact-label { color:var(--accent); font:800 2.3mm Arial,sans-serif; letter-spacing:.18em; }
