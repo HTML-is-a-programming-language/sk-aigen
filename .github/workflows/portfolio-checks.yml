@@ -33,6 +33,10 @@ jobs:
               env:
                   STRICT_PORTFOLIO_LAYOUT: "1"
               run: pnpm pdf
+            - name: Validate static web pre-render
+              run: |
+                  pnpm build:site
+                  test "$(grep -o 'article class="page ' site/index.html | wc -l)" -eq 14
             - name: Validate PDF page count and key text
               run: |
                   set -euo pipefail
