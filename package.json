@@ -6,7 +6,8 @@
     "type": "module",
     "scripts": {
         "dev": "http-server site -p 4173 -c-1",
-        "pdf": "node scripts/export-pdf.mjs"
+        "pdf": "node scripts/export-pdf.mjs",
+        "build:site": "node scripts/build-site.mjs"
     },
     "devDependencies": {
         "http-server": "^14.1.1",
