@@ -16,22 +16,6 @@ body {
     font-family: "Pretendard", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
-.screen-toolbar {
-    height: 72px;
-    margin: 0 auto;
-    max-width: 1180px;
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    padding: 0 20px;
-    letter-spacing: .09em;
-    font-size: 12px;
-}
-.toolbar-mark { display:flex; align-items:center; gap: 9px; color: #f5f8e7; font-weight: 700; }
-.toolbar-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-.toolbar-help { margin-left: auto; color: #b1bdbe; font-size: 10px; }
-.print-button { border: 1px solid #b5c4aa; border-radius: 6px; background: transparent; color: #eff5d5; padding: 11px 16px; font: inherit; letter-spacing: 0; cursor: pointer; }
-.print-button:hover { background: #d7f184; color: #0d1e22; }
 #portfolio { margin: 0 auto 60px; }
 .page-wrap {
     position: relative;
@@ -119,14 +103,8 @@ body {
 @media print {
     @page { size: A4 landscape; margin: 0; }
     html, body { margin:0!important; padding:0!important; background:transparent!important; print-color-adjust: exact; -webkit-print-color-adjust:exact; }
-    .screen-toolbar { display:none!important; }
     #portfolio { margin:0!important; }
     .page-wrap { width:297mm!important; height:210mm!important; margin:0!important; }
     .page { transform:none!important; width:297mm!important; height:210mm!important; }
     .page:last-child { break-after:auto; page-break-after:auto; }
-}
-@media screen and (max-width:650px) {
-    .screen-toolbar { height:62px; padding:0 18px; }
-    .toolbar-help { display:none; }
-    .print-button { margin-left:auto; }
 }
