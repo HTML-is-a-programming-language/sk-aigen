@@ -301,8 +301,6 @@
 @media screen {
     .editorial-page { box-shadow: 0 7mm 18mm #00000027; }
     .page-wrap { margin-bottom: calc(18px * var(--page-scale)); }
-    .screen-toolbar { max-width: 1180px; }
-    .screen-toolbar a { text-decoration: none; }
 }
 @media print {
     .editorial-page { box-shadow: none!important; }
