@@ -21,10 +21,8 @@
 }
 .page-dark .doc-head { color: #9bb6af; border-color: #8ba59e42; }
 .doc-head b { color: #7c9991; margin: 0 1.5mm; }
-.doc-brand { color: #193536; font-weight: 850; letter-spacing: .06em; }
+.doc-brand { color: #193536; font-weight: 800; letter-spacing: .14em; }
 .page-dark .doc-brand { color: #f1f4ed; }
-.doc-brand > span { color: #75a576; padding: 0 .5mm; }
-.doc-brand i { width: 7mm; border-top: 1px solid currentColor; opacity: .5; margin: 0 3mm; vertical-align: middle; display: inline-block; }
 .doc-content {
     position: absolute; left: 18mm; right: 18mm; top: 34mm; bottom: 16mm;
     display: flex; flex-direction: column; min-height: 0;
