@@ -70,6 +70,24 @@ try {
     if (pageCount !== 13) {
         throw new Error('Expected 13 A4 pages but rendered ' + pageCount);
     }
+    // Keep page 4's problem, implementation and product principle to two lines.
+    const pageFourCopyLines = await page.evaluate(() =>
+        [...document.querySelectorAll('#page-04 .case-copy > p, #page-04 .case-copy .accent-box p')]
+            .map((element) => {
+                const style = getComputedStyle(element);
+                const lineHeight = parseFloat(style.lineHeight);
+                const actualHeight = element.getBoundingClientRect().height;
+                return {
+                    lines: Math.round(actualHeight / lineHeight),
+                    overflows: element.scrollWidth > element.clientWidth + 2,
+                    text: element.textContent.trim().slice(0, 75)
+                };
+            })
+    );
+    console.log('Page 04 copy line counts:', JSON.stringify(pageFourCopyLines));
+    if (pageFourCopyLines.length !== 3 || pageFourCopyLines.some((item) => item.lines > 2 || item.overflows)) {
+        throw new Error('Page 04 case-copy paragraphs must each fit within two lines');
+    }
 
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
