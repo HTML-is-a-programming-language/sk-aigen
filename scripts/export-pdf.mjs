@@ -189,6 +189,9 @@ try {
         const gap = (left, right) =>
             left && right ? right.getBoundingClientRect().left - left.getBoundingClientRect().right : -1;
         return {
+            careflowHeading: measure('#page-07 .careflow-evidence-head h3'),
+            careflowRetrospective: measure('#page-07 .careflow-retrospective-lead'),
+            comparisonLayout: panel ? getComputedStyle(panel).display : 'missing',
             technicalNote: measure('#page-11 .beauty-watchdog'),
             roleFit: measure('#page-13 .fit-skill-card:nth-child(2) > p'),
             preferences: measure('#page-13 .side-intro'),
@@ -202,6 +205,10 @@ try {
     });
     console.log('TARGETED_LAYOUT_CHECK:', JSON.stringify(requestedFinalEdits));
     if (
+        requestedFinalEdits.careflowHeading.lines !== 1 || requestedFinalEdits.careflowHeading.overflow ||
+        requestedFinalEdits.careflowRetrospective.lines !== 1 || requestedFinalEdits.careflowRetrospective.overflow ||
+        requestedFinalEdits.comparisonLayout !== 'flex' ||
+        Math.abs(requestedFinalEdits.comparisonGapBefore - requestedFinalEdits.comparisonGapAfter) > 2 ||
         requestedFinalEdits.technicalNote.lines !== 1 || requestedFinalEdits.technicalNote.overflow ||
         requestedFinalEdits.roleFit.lines !== 2 || requestedFinalEdits.roleFit.overflow ||
         requestedFinalEdits.preferences.lines !== 3 || requestedFinalEdits.preferences.overflow ||
