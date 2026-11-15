@@ -492,6 +492,76 @@
 .closing-identity p { font-size: 2.8mm; color: #adc9bf; margin: 0; }
 .closing-identity a { color: #daef9e; border-bottom: 1px solid #9bb78d; padding-bottom: 2mm; font: 750 2.55mm "Pretendard Variable"; }
 .closing-disclaimer { border-top: 1px solid #749a8860; color: #93b0a7; font-size: 2.35mm; line-height: 1.5; padding-top: 2.7mm; }
+/* Readable PDF typography — preserve the A4 landscape layout and headline hierarchy.
+   Absolute mm units are intentional: browser viewing and A4 PDF use the same sizes.
+   3.53mm = 10pt, 3.70mm = 10.5pt. Headings retain their existing sizes. */
+.doc-head { font-size: 2.95mm; }
+.section-label { font-size: 2.95mm; }
+.doc-foot { font-size: 2.90mm; letter-spacing: .08em; }
+.doc-foot span:last-child { font-size: 3.10mm; }
+.side-intro, .right-caption { font-size: 3.40mm; line-height: 1.55; }
+.micro, .block-label { font-size: 3.0mm; }
+.body-sm { font-size: 3.75mm; line-height: 1.55; }
+.caution { font-size: 3.05mm; line-height: 1.48; }
+.small-cap { font-size: 3.10mm; }
+.step-card p, #page-02 .step-card p { font-size: 3.40mm; line-height: 1.48; }
+.step-card strong, #page-02 .step-card strong { font-size: 3.50mm; }
+.project-index-card p { font-size: 3.60mm; line-height: 1.52; }
+.index-foot { font-size: 3.0mm; }
+.index-foot b { font-size: 3.25mm; }
+.case-copy .body-sm { font-size: 3.75mm; line-height: 1.60; }
+.accent-box b { font-size: 3.55mm; }
+.accent-box p { font-size: 3.55mm; line-height: 1.46; }
+.process-strip > div { font-size: 3.12mm; }
+.source-line { font-size: 3.08mm; }
+.source-line span { font-size: 2.95mm; }
+.metric-box span { font-size: 3.50mm; }
+.metric-box small { font-size: 3.05mm; }
+.deeper-grid .body-sm { font-size: 3.60mm; line-height: 1.50; }
+.case-row > span { font-size: 3.20mm; }
+.case-row p { font-size: 3.55mm; line-height: 1.48; }
+.thin-stats span { font-size: 3.15mm; }
+.inline-stat b { font-size: 3.25mm; }
+.inline-stat span { font-size: 3.50mm; line-height: 1.40; }
+.table-row { font-size: 3.35mm; }
+.table-row.table-head { font-size: 2.98mm; }
+#page-05 .sample-evidence-grid .panel { padding: 3.7mm 4.5mm; }
+#page-05 .sample-evidence-grid .panel h3 { margin: 1.6mm 0 2.4mm; }
+#page-05 .sample-evidence-grid .case-row { padding: 1.05mm 0; }
+#page-05 .sample-evidence-grid .case-row > span { font-size: 3.25mm; }
+#page-05 .sample-evidence-grid .case-row p { font-size: 3.55mm; line-height: 1.40; }
+#page-05 .sample-evidence-panel .micro { margin-bottom: 1.0mm; }
+#page-05 .sample-evidence-panel h3 { margin-bottom: 1.6mm; }
+#page-05 .retrospective-lead { font-size: 3.55mm; line-height: 1.42; margin-bottom: 1.7mm; }
+#page-05 .retrospective-item { padding: .75mm 0; gap: 1.7mm; }
+#page-05 .retrospective-item > span { font-size: 3.20mm; }
+#page-05 .retrospective-item p { font-size: 3.50mm; line-height: 1.34; }
+#page-05 .retrospective-item strong { font-size: 3.55mm; margin-bottom: .2mm; }
+#page-07 .deeper-grid .panel { padding: 3.5mm; }
+#page-07 .deeper-grid .panel h3 { margin: 1.3mm 0 1.6mm; }
+#page-07 .case-row { padding: .85mm 0; gap: 1.5mm; }
+#page-07 .case-row > span { font-size: 3.15mm; }
+#page-07 .case-row p { font-size: 3.55mm; line-height: 1.36; }
+#page-07 .body-sm { font-size: 3.55mm; line-height: 1.43; }
+#page-07 .thin-stats { margin: 1.6mm 0; }
+#page-07 .thin-stats > div { padding: 2mm; }
+#page-07 .thin-stats span { font-size: 3.05mm; line-height: 1.28; }
+#page-07 .caution.on-dark { font-size: 3.05mm; line-height: 1.37; padding-top: 1.6mm; margin-top: 1.6mm; }
+.incident strong { font-size: 3.75mm; }
+.incident p { font-size: 3.55mm; line-height: 1.47; }
+#page-11 .incident { padding: 4.3mm 0; }
+.ops-flow div > span { font-size: 2.8mm; }
+.ops-flow div strong { font-size: 3.50mm; }
+#page-11 .caution.on-dark { font-size: 3.05mm; line-height: 1.43; }
+.operations-grid + .source-line { font-size: 2.95mm; }
+.survey-alert, .beauty-alert { font-size: 3.30mm; }
+.principle p { font-size: 3.65mm; line-height: 1.55; }
+.growth-grid .panel .body-sm { font-size: 3.75mm; line-height: 1.55; }
+.horizon-box p { font-size: 3.60mm; line-height: 1.5; }
+.link-item p { font-size: 3.55mm; }
+.closing-identity p { font-size: 3.50mm; }
+.closing-disclaimer { font-size: 3.05mm; line-height: 1.4; }
+
 @media screen {
     .editorial-page { box-shadow: 0 7mm 18mm #00000027; }
     .page-wrap { margin-bottom: calc(18px * var(--page-scale)); }
