@@ -263,12 +263,10 @@
     box-shadow: 0 8mm 24mm #0e282a55;
 }
 @media screen and (hover: hover) and (pointer: fine) {
-    .project-preview:hover,
-    .project-preview:focus-within {
+    .project-preview:hover {
         z-index: 50;
     }
-    .project-preview:hover .project-preview-zoom,
-    .project-preview:focus-within .project-preview-zoom {
+    .project-preview:hover .project-preview-zoom {
         opacity: 1;
         visibility: visible;
         transform: scale(1.48);
