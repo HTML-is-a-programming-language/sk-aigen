@@ -106,6 +106,19 @@ try {
         throw new Error('Page 05 sample evidence descriptions must each fit exactly two lines');
     }
 
+    const retrospectiveLeadLayout = await page.evaluate(() => {
+        const element = document.querySelector('#page-05 .retrospective-lead');
+        const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
+        return {
+            lines: Math.round(element.getBoundingClientRect().height / lineHeight),
+            overflows: element.scrollWidth > element.clientWidth + 2
+        };
+    });
+    console.log('Page 05 retrospective lead:', JSON.stringify(retrospectiveLeadLayout));
+    if (retrospectiveLeadLayout.lines !== 2 || retrospectiveLeadLayout.overflows) {
+        throw new Error('Page 05 retrospective lead must render in exactly two lines');
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
