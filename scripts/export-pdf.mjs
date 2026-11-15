@@ -12,7 +12,19 @@ const target = resolve(repoRoot, 'exports/sk-aigen-portfolio.pdf');
 const preview = resolve(repoRoot, 'exports/cover-preview.png');
 
 const html = readFileSync(htmlPath, 'utf8');
-const css = readFileSync(cssPath, 'utf8');
+const fontPath = resolve(repoRoot, 'site/assets/fonts/PretendardVariable.woff2');
+if (!existsSync(fontPath)) {
+    throw new Error('Pretendard font missing. Run node scripts/install-font.mjs before exporting PDF.');
+}
+const fontBuffer = readFileSync(fontPath);
+if (fontBuffer.subarray(0, 4).toString('ascii') !== 'wOF2') {
+    throw new Error('Invalid self-hosted Pretendard WOFF2 data.');
+}
+const fontDataUrl = 'data:font/woff2;base64,' + fontBuffer.toString('base64');
+const css = readFileSync(cssPath, 'utf8').replace(
+    'url("./fonts/PretendardVariable.woff2")',
+    'url("' + fontDataUrl + '")'
+);
 const editorial = readFileSync(editorialPath, 'utf8');
 const chapters = readFileSync(chaptersPath, 'utf8');
 let markup = html
@@ -41,6 +53,19 @@ try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1080 }, deviceScaleFactor: 1 });
     await page.setContent(markup, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
+    const fontCheck = await page.evaluate(() => {
+        const faces = [...document.fonts].filter(
+            (font) => font.family.replaceAll('"', '') === 'Pretendard Variable'
+        );
+        return {
+            loaded: faces.some((font) => font.status === 'loaded'),
+            families: getComputedStyle(document.querySelector('.page h1')).fontFamily
+        };
+    });
+    if (!fontCheck.loaded || !fontCheck.families.includes('Pretendard Variable')) {
+        throw new Error('Pretendard not loaded in PDF renderer: ' + JSON.stringify(fontCheck));
+    }
+    console.log('PDF typeface: Pretendard Variable (verified loaded)');
     const pageCount = await page.locator('article.page').count();
     if (pageCount !== 14) {
         throw new Error('Expected 14 A4 pages but rendered ' + pageCount);
