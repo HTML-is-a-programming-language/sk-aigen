@@ -815,8 +815,8 @@
     display: flex;
     flex: none;
     align-items: center;
-    justify-content: space-between;
-    gap: 2mm;
+    justify-content: center;
+    gap: 3mm;
     margin-top: 2.4mm;
     padding: 2.2mm 2.6mm;
     border: 1px solid #cddfdd;
