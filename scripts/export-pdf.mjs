@@ -93,12 +93,12 @@ try {
             const horizontalOverflow = el.scrollWidth > el.clientWidth + 6;
             if (lines <= 2 && !horizontalOverflow) return [];
             return [{
-                page: Number(el.closest('.page-wrap')?.querySelector('.doc-foot span:last-child')?.textContent?.match(/\\d+/)?.[0] || 1),
+                page: Number(el.closest('.page-wrap')?.querySelector('.doc-foot span:last-child')?.textContent?.match(/\d+/)?.[0] || 1),
                 type: el.tagName.toLowerCase(),
                 className: el.className || '',
                 lines,
                 horizontalOverflow,
-                text: el.textContent.trim().replace(/\\s+/g, ' ').slice(0, 125)
+                text: el.textContent.trim().replace(/\s+/g, ' ').slice(0, 125)
             }];
         });
     });
