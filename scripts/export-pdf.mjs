@@ -89,6 +89,23 @@ try {
         throw new Error('Page 04 case-copy paragraphs must each fit within two lines');
     }
 
+    // Verify the three sample evidence rows remain readable as exactly two lines.
+    const sampleEvidenceLines = await page.evaluate(() =>
+        [...document.querySelectorAll('#page-05 .sample-row-list .case-row p')]
+            .map((element) => {
+                const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
+                return {
+                    lines: Math.round(element.getBoundingClientRect().height / lineHeight),
+                    overflows: element.scrollWidth > element.clientWidth + 2,
+                    text: element.textContent.trim().slice(0, 75)
+                };
+            })
+    );
+    console.log('Page 05 sample row line counts:', JSON.stringify(sampleEvidenceLines));
+    if (sampleEvidenceLines.length !== 3 || sampleEvidenceLines.some((item) => item.lines !== 2 || item.overflows)) {
+        throw new Error('Page 05 sample evidence descriptions must each fit exactly two lines');
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
