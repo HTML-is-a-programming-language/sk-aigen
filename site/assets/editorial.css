@@ -664,6 +664,7 @@
     font-size: 3.5mm;
     line-height: 1.33;
     word-break: keep-all;
+    white-space: nowrap;
 }
 #page-07 .careflow-retrospective-item strong {
     display: block;
