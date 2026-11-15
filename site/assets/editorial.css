@@ -96,7 +96,7 @@
 #page-02 .about-columns {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 59mm minmax(0, 1fr);
+    grid-template-rows: 74mm minmax(0, 1fr);
     gap: 4mm;
     flex: 1;
     min-height: 0;
@@ -111,15 +111,15 @@
     justify-content: center;
     gap: 4mm;
     min-height: 0;
-    padding: 7mm 10mm;
+    padding: 8mm 11mm;
     border-left: 1.4mm solid #b9e58e;
     border-radius: 3.2mm;
 }
 #page-02 .quote-panel .about-lead {
     width: 100%;
     max-width: none;
-    font-size: 4.4mm;
-    line-height: 1.53;
+    font-size: 5.2mm;
+    line-height: 1.5;
     letter-spacing: -.035em;
     color: #f0f6ed;
 }
@@ -131,7 +131,7 @@
     padding: 2.5mm 0 0;
     border-top: 1px solid #739c8d80;
     border-left: 0;
-    font-size: 2.9mm;
+    font-size: 3.1mm;
     font-weight: 700;
     line-height: 1.6;
     color: #d7e9d5;
@@ -149,7 +149,7 @@
     gap: 5mm;
     min-width: 0;
     min-height: 0;
-    padding: 5mm 6mm;
+    padding: 4mm 5.5mm;
     border: 1px solid #d4e3dc;
     border-radius: 3.2mm;
     background: #ffffff;
@@ -174,9 +174,9 @@
     letter-spacing: .01em;
 }
 #page-02 .step-card p {
-    margin-top: 2mm;
+    margin-top: 1.8mm;
     font-size: 2.95mm;
-    line-height: 1.62;
+    line-height: 1.5;
     color: #607872;
 }
 
