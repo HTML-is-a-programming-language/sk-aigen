@@ -66,6 +66,44 @@ try {
         throw new Error('Pretendard not loaded in PDF renderer: ' + JSON.stringify(fontCheck));
     }
     console.log('PDF typeface: Pretendard Variable (verified loaded)');
+
+    // Audit text after font load rather than truncating it with CSS line clamping.
+    // Each visible sentence/card description should occupy at most two lines.
+    const lineAudit = await page.evaluate(() => {
+        const selector = '.page h1, .editorial-page h2, .editorial-page h3, .editorial-page p, .editorial-page .side-intro, .editorial-page .right-caption, .editorial-page .experience-bottom strong, .editorial-page .fit-skill-card > strong, .editorial-page .fit-contact-links strong';
+        const nodes = [...document.querySelectorAll(selector)];
+        return nodes.flatMap((el) => {
+            const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+            const tops = [];
+            let node;
+            while ((node = walker.nextNode())) {
+                if (!node.textContent.trim()) continue;
+                const range = document.createRange();
+                range.selectNodeContents(node);
+                for (const rect of range.getClientRects()) {
+                    if (rect.width > 0.5 && rect.height > 0.5) tops.push(rect.top);
+                }
+            }
+            tops.sort((a, b) => a - b);
+            const grouped = [];
+            for (const top of tops) {
+                if (!grouped.length || top - grouped[grouped.length - 1] > 7) grouped.push(top);
+            }
+            const lines = grouped.length;
+            const horizontalOverflow = el.scrollWidth > el.clientWidth + 6;
+            if (lines <= 2 && !horizontalOverflow) return [];
+            return [{
+                page: Number(el.closest('.page-wrap')?.querySelector('.doc-foot span:last-child')?.textContent?.match(/\\d+/)?.[0] || 1),
+                type: el.tagName.toLowerCase(),
+                className: el.className || '',
+                lines,
+                horizontalOverflow,
+                text: el.textContent.trim().replace(/\\s+/g, ' ').slice(0, 125)
+            }];
+        });
+    });
+    console.log('TEXT_LINE_AUDIT:', JSON.stringify(lineAudit));
+
     const pageCount = await page.locator('article.page').count();
     if (pageCount !== 13) {
         throw new Error('Expected 13 A4 pages but rendered ' + pageCount);
