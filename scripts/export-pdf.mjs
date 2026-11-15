@@ -110,7 +110,7 @@ try {
     // Review natural two-line wraps so editorial break points can be explicit.
     const naturalTwoLineWraps = await page.evaluate(() =>
         [...document.querySelectorAll('.editorial-page p, .editorial-page h2, .editorial-page h3, .editorial-page .side-intro, .editorial-page .right-caption')]
-            .filter((el) => !el.querySelector('br') && getComputedStyle(el.querySelector('strong') || el).display !== 'block')
+            .filter((el) => !el.querySelector('br') && (!el.querySelector('strong') || getComputedStyle(el.querySelector('strong')).display !== 'block'))
             .flatMap((el) => {
                 const range = document.createRange();
                 range.selectNodeContents(el);
