@@ -285,37 +285,37 @@
 </div>
 <!-- 11 / BEAUTYRANKS EVIDENCE -->
 <div class="page-wrap" id="page-11">
-  <article class="page editorial-page page-light" aria-label="11페이지: BeautyRanks 운영 장애와 대응">
+  <article class="page editorial-page page-light" aria-label="11페이지: BeautyRanks 평가 근거와 사용자 이해 개선">
     <div class="page-accent"></div>
-    <header class="doc-head"><span class="doc-brand">PORTFOLIO</span><span>CASE STUDY 04 <b> / </b> OPERATIONS &amp; LIMITS</span></header>
+    <header class="doc-head"><span class="doc-brand">PORTFOLIO</span><span>CASE STUDY 04 <b> / </b> PRODUCT &amp; EVIDENCE</span></header>
     <div class="doc-content">
-      <div class="section-label">06 <span>/</span> BEAUTYRANKS — OPERATING REALITY</div>
-      <div class="page-title-line"><div><h2>화장품을 비교할 데이터가,<br><em>중간에 끊기지 않도록.</em></h2></div><div class="side-intro">Railway 502 · 외부 사이트 403<br>성분 설명 누락 · 회귀 테스트</div></div>
-      <div class="two-cols deeper-grid operations-grid beauty-case-grid">
+      <div class="section-label">06 <span>/</span> BEAUTYRANKS — EXPLANATION &amp; VALIDATION</div>
+      <div class="page-title-line"><div><h2>점수는 보여줬지만,<br><em>선택할 이유가 부족했습니다.</em></h2></div><div class="side-intro">실제 상품 상세 화면의 성분 해설 누락<br>저장된 채점 근거 활용 · 회귀 테스트</div></div>
+      <div class="two-cols deeper-grid operations-grid beauty-case-grid beauty-scoring-grid">
         <div class="panel white-panel beauty-incident-panel">
-          <div class="block-label">ISSUES / ROOT CAUSE / TECHNICAL CHOICE</div>
+          <div class="block-label">ISSUE / CAUSE / DECISION</div>
           <div class="beauty-incident-list">
-            <div class="incident"><b class="incident-code">502</b><div><strong>상품 업로드가 중간에 실패</strong><p>Railway 컨테이너 시작 중 연결 지연. 일시적 5xx·타임아웃에만 제한적 재시도와 JSONL 체크포인트 재전송을 적용했습니다.</p></div></div>
-            <div class="incident"><b class="incident-code">403</b><div><strong>외부 사이트 접근 제한으로 수집 중단</strong><p>올리브영이 접근을 거부한 상황. 차단 우회 대신 수집을 종료하고 이미 확보한 데이터를 보존했습니다.</p></div></div>
-            <div class="incident"><b class="incident-code">AI</b><div><strong>성분 점수 근거는 있는데 설명이 비어 있음</strong><p>AI 해설 배열이 누락된 경우 새 호출 대신 저장된 채점 근거로 성분별 설명을 복원했습니다.</p></div></div>
+            <div class="incident"><b class="incident-code">01</b><div><strong>문제 · 점수만으로는 알기 어려웠던 이유</strong><p>실제 C등급·50.5점 상품에 장단점은 있었지만, 주요 성분과 주의 성분에 대한 상세 설명은 비어 있었습니다.</p></div></div>
+            <div class="incident"><b class="incident-code">02</b><div><strong>원인 · 채점 근거와 AI 해설의 불일치</strong><p>글리세린·판테놀 등 성분 근거는 저장돼 있었지만 AI가 생성한 성분 해설 목록은 빈 배열이었습니다.</p></div></div>
+            <div class="incident"><b class="incident-code">03</b><div><strong>해결 · 생성보다 검증된 근거 재사용</strong><p>추가 AI 호출 없이 기존 채점 근거에서 실제 성분명을 읽어 역할·주의점을 설명하고 기존 해설은 보존했습니다.</p></div></div>
           </div>
           <div class="beauty-before-after">
-            <span>BEFORE</span><p>502 이후 미전송 데이터가 다음 실행에서 누락</p>
+            <span>BEFORE</span><p>50.5점 · 성분 해설 목록 누락</p>
             <b>→</b>
-            <span>AFTER</span><p>체크포인트를 통해 미전송 JSONL 재처리</p>
+            <span>AFTER</span><p>회귀 테스트에서 주요 성분 4개 복원</p>
           </div>
-          <p class="beauty-watchdog">운영 보완 · 매시 정각 실행 상태를 확인하고, 수집 중이 아닐 때만 작업을 재요청합니다.</p>
+          <p class="beauty-watchdog">기술 선택 · 점수는 사전 정의된 규칙으로 계산하고, AI는 성분 설명을 보조하도록 역할을 분리했습니다.</p>
         </div>
         <div class="panel ink-panel beauty-lessons-panel">
-          <div class="micro muted-lime">TESTED PATHS / REGRESSION</div>
-          <p class="beauty-test-evidence">502 일시 오류 복구 · 403 무재시도 · JSONL 재전송 회귀 테스트. 성분 설명 복구는 TypeScript 컴파일, Node 테스트 4개와 Python 계약 테스트로 확인했습니다.</p>
+          <div class="micro muted-lime">TEST RESULTS / VERIFICATION</div>
+          <p class="beauty-test-evidence">TypeScript 검사 · Node 테스트 4개 · Python 계약 테스트. 누락 설명 복원, 기존 해설 유지·중복 방지, 주의 성분 표현, 근거가 없는 경우를 점검했습니다.</p>
           <div class="micro muted-lime beauty-lessons-label">RETROSPECTIVE / LESSONS LEARNED</div>
           <div class="beauty-lessons-list">
-            <div class="beauty-lesson"><span>01</span><p><strong>내 경험에서 문제를 찾기</strong>화장품 선택의 막막함을 비교 서비스로 풀었습니다.</p></div>
-            <div class="beauty-lesson"><span>02</span><p><strong>AI 점수보다 일관된 근거</strong>점수는 고정 규칙으로, AI는 해설에 사용했습니다.</p></div>
-            <div class="beauty-lesson"><span>03</span><p><strong>복구까지 설계해야 서비스</strong>오류가 나도 수집 기록을 이어가도록 개선했습니다.</p></div>
+            <div class="beauty-lesson"><span>01</span><p><strong>점수보다 이유가 중요하다</strong>왜 그 점수인지 성분 근거를 보여줘야 합니다.</p></div>
+            <div class="beauty-lesson"><span>02</span><p><strong>AI 해설에도 검증이 필요하다</strong>누락된 설명은 저장된 근거로 보완했습니다.</p></div>
+            <div class="beauty-lesson"><span>03</span><p><strong>내 피부에 맞는지는 별개다</strong>성분 점수만으로 피부 적합성을 확정할 수 없습니다.</p></div>
           </div>
-          <p class="beauty-next-step">NEXT · 개인 피부 적합성 및 장기 수집 안정성은 추가 검증 과제입니다.</p>
+          <p class="beauty-next-step">NEXT · 실제 사용자의 선택 경험과 피부 적합성을 검증하는 기능은 앞으로의 과제입니다.</p>
         </div>
       </div>
     </div>
