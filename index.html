@@ -123,27 +123,40 @@
 </div>
 <!-- 05 / LECTUREFORGE EVIDENCE -->
 <div class="page-wrap" id="page-05">
-  <article class="page editorial-page page-ivory" aria-label="5페이지: LectureForge 실제 생성과 장애 복구">
+  <article class="page editorial-page page-ivory" aria-label="5페이지: 실제 기본 샘플 PDF 강의영상 생성 검증">
     <div class="page-accent"></div>
     <header class="doc-head"><span class="doc-brand">PORTFOLIO</span><span>CASE STUDY 01 <b> / </b> PRODUCTION EVIDENCE</span></header>
     <div class="doc-content">
       <div class="section-label">03 <span>/</span> LECTUREFORGE — VERIFICATION</div>
-      <div class="page-title-line"><div><h2>영상 파일이 존재하는 것과<br><em>끝까지 재생되는 것</em>은 다릅니다.</h2></div><div class="side-intro">자체 제작 1페이지 PDF · 실제 OpenAI<br>Writer → Reviewer → 승인 → TTS → MP4</div></div>
-      <div class="metric-row four"><div class="metric-box accent-metric"><strong>1 <i>/ 1</i></strong><span>실제 생성·다운로드</span><small>독립 E2E 1회</small></div><div class="metric-box"><strong>17.26<i>s</i></strong><span>작업 전체 소요</span><small>단일 관측값, 평균 아님</small></div><div class="metric-box"><strong>17.625<i>s</i></strong><span>완성 영상 길이</span><small>1280×720 · H.264/AAC</small></div><div class="metric-box"><strong>12<i>건</i></strong><span>PC·모바일 브라우저 QA</span><small>모의 AI 사용</small></div></div>
-      <div class="two-cols deeper-grid">
+      <div class="page-title-line"><div><h2>기본 샘플 PDF를,<br><em>실제 강의 영상</em>으로 만들었습니다.</h2></div><div class="side-intro">서비스 기본 예제 sample2.pdf · 3페이지<br>실제 OpenAI Writer / Reviewer / TTS · FFmpeg</div></div>
+      <div class="metric-row four">
+        <div class="metric-box accent-metric"><strong>3 <i>/ 3</i></strong><span>샘플 PDF 전 페이지 처리</span><small>실제 AI 생성 · MP4 다운로드</small></div>
+        <div class="metric-box"><strong>42.98<i>s</i></strong><span>전체 제작 소요</span><small>단 1회 측정 · 평균 아님</small></div>
+        <div class="metric-box"><strong>136.625<i>s</i></strong><span>완성 영상 길이</span><small>ffprobe로 재생 시간 확인</small></div>
+        <div class="metric-box"><strong>H.264</strong><span>영상·음성 스트림 검증</span><small>AAC · 1280 × 720</small></div>
+      </div>
+      <div class="two-cols deeper-grid sample-evidence-grid">
         <div class="panel white-panel">
-          <div class="block-label">ENGINEERING LESSON</div>
-          <h3>재시도가 이전 성공을 지우지 않도록</h3>
-          <div class="case-row"><span>재개</span><p>페이지별 텍스트·대본·음성·영상 체크포인트를 해시로 확인하고, 유효한 결과는 재사용.</p></div>
-          <div class="case-row"><span>보관</span><p>Railway 1GB 영구 Volume과 SQLite로 생성 결과·사용량 기록을 유지하도록 설계.</p></div>
-          <div class="case-row"><span>삭제</span><p>작업 삭제 시 PDF·오디오·MP4 및 조회·다운로드 경로 차단을 자동 검증.</p></div>
+          <div class="block-label">REAL SAMPLE / END-TO-END</div>
+          <h3>운영 API에서 실제 샘플 3페이지를 생성</h3>
+          <div class="case-row"><span>입력</span><p>서비스 기본 sample2.pdf(모델 성능 모니터링)를 사용해 3페이지 텍스트를 추출하고 AI 대본을 생성.</p></div>
+          <div class="case-row"><span>검토</span><p>Writer·Reviewer 실제 호출로 대본 3건 검토. 승인 전에는 다운로드가 없었고, 승인 API 요청 1회 후 영상 제작.</p></div>
+          <div class="case-row"><span>결과</span><p>3페이지 MP4 다운로드 및 H.264/AAC 확인. 테스트 작업 삭제 후 조회 불가(404)까지 검증.</p></div>
+          <p class="sample-evidence-caution">승인은 자동 테스트가 요청했으며 사람이 대본 내용을 직접 검토한 것은 아닙니다. 제작시간 평균, API 청구액, 학습 효과는 측정하지 않았습니다.</p>
         </div>
-        <div class="panel ink-panel">
-          <div class="micro muted-lime">WHAT THE NUMBERS DO NOT MEAN</div>
-          <h3 class="light-heading">검증 범위를 분리했습니다.</h3>
-          <p class="body-sm soft">실제 OpenAI 생성은 <strong>1페이지·1회</strong>입니다. 다중 페이지 경로의 FFmpeg 테스트 및 브라우저 테스트는 외부 AI 호출을 모의 처리했습니다.</p>
-          <div class="soft-divider"></div>
-          <p class="body-sm soft">평균 제작시간, 고객 학습 효과, 실제 API 비용 절감률은 측정하지 않았습니다. 사용자의 최종 승인 절차를 실서비스 기능으로 유지합니다.</p>
+        <div class="panel ink-panel sample-evidence-panel">
+          <div class="micro muted-lime">ACTUAL OUTPUT · SAMPLE2.PDF</div>
+          <h3 class="light-heading">실제로 생성된 영상의 한 장면</h3>
+          <a class="sample-evidence-frame" href="https://raw.githubusercontent.com/HTML-is-a-programming-language/ai-instructor-agent/main/docs/evidence/sample2/lecture.mp4" target="_blank" rel="noopener noreferrer" aria-label="실제 sample2.pdf 생성 MP4 영상 열기">
+            <img src="./site/assets/project-previews/sample2-frame.jpg" alt="실제 sample2.pdf 강의영상의 모델 성능 모니터링 슬라이드" loading="eager">
+            <span aria-hidden="true">▶ 영상 보기</span>
+          </a>
+          <div class="sample-evidence-links">
+            <a href="https://ai-instructor-agent.vercel.app/samples/sample2.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF ↗</a>
+            <a href="https://raw.githubusercontent.com/HTML-is-a-programming-language/ai-instructor-agent/main/docs/evidence/sample2/lecture.mp4" target="_blank" rel="noopener noreferrer">완성 MP4 ↗</a>
+            <a href="https://github.com/HTML-is-a-programming-language/ai-instructor-agent/actions/runs/43669357142" target="_blank" rel="noopener noreferrer">실제 테스트 ↗</a>
+          </div>
+          <p class="sample-evidence-meta">실제 생성 1회 · 2,972,265바이트 · 테스트 종료 후 서버 작업 삭제</p>
         </div>
       </div>
     </div>
