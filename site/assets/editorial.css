@@ -740,6 +740,166 @@
     word-break: keep-all;
 }
 
+/* BeautyRanks: personally motivated product, observed incidents, tests, retrospective. */
+#page-10 .case-copy .lead-copy {
+    font-size: 4.8mm;
+    line-height: 1.44;
+    margin: 2.6mm 0 2.4mm;
+}
+#page-10 .case-copy .body-sm {
+    font-size: 3.65mm;
+    line-height: 1.5;
+}
+#page-10 .beauty-role {
+    margin-top: 3.3mm;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1mm;
+    color: #3e6666;
+    word-break: keep-all;
+}
+#page-10 .beauty-role b {
+    color: #2d7873;
+    font-size: 3.15mm;
+}
+#page-10 .beauty-role span {
+    font-size: 3.4mm;
+    line-height: 1.45;
+}
+#page-10 .accent-box {
+    padding: 3.3mm 4.6mm;
+}
+#page-10 .accent-box p {
+    font-size: 3.42mm;
+    line-height: 1.43;
+}
+#page-10 .tag-flow { margin-top: 3mm; }
+#page-11 .beauty-case-grid .panel {
+    padding: 4.1mm 5mm;
+    min-height: 0;
+}
+#page-11 .beauty-incident-panel,
+#page-11 .beauty-lessons-panel {
+    display: flex;
+    flex-direction: column;
+}
+#page-11 .beauty-incident-list {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    flex: 1;
+    min-height: 0;
+    margin-top: 2.3mm;
+}
+#page-11 .beauty-incident-list .incident {
+    display: grid;
+    grid-template-columns: 11mm minmax(0, 1fr);
+    gap: 2.2mm;
+    align-items: center;
+    padding: 1.65mm 0;
+    min-height: 0;
+}
+#page-11 .beauty-incident-list .incident-code { font-size: 4.4mm; }
+#page-11 .beauty-incident-list .incident strong {
+    font-size: 3.58mm;
+    line-height: 1.27;
+}
+#page-11 .beauty-incident-list .incident p {
+    font-size: 3.32mm;
+    line-height: 1.38;
+    margin-top: .8mm;
+    word-break: keep-all;
+}
+#page-11 .beauty-before-after {
+    flex: none;
+    display: grid;
+    grid-template-columns: 12mm minmax(0, 1fr) 5mm 12mm minmax(0, 1fr);
+    gap: 1.5mm;
+    align-items: center;
+    margin-top: 2.4mm;
+    padding: 2.2mm 2.6mm;
+    border: 1px solid #cddfdd;
+    background: #e9f2ee;
+    border-radius: 2mm;
+}
+#page-11 .beauty-before-after span {
+    color: #2f7571;
+    font-size: 2.6mm;
+    font-weight: 800;
+}
+#page-11 .beauty-before-after p {
+    font-size: 2.9mm;
+    line-height: 1.26;
+    color: #3d6664;
+    word-break: keep-all;
+}
+#page-11 .beauty-before-after > b {
+    font-size: 4mm;
+    text-align: center;
+    color: #4e8d7b;
+}
+#page-11 .beauty-watchdog {
+    flex: none;
+    margin-top: 2.1mm;
+    font-size: 2.87mm;
+    line-height: 1.36;
+    color: #476f6b;
+    word-break: keep-all;
+}
+#page-11 .beauty-test-evidence {
+    flex: none;
+    margin: 2mm 0 2.6mm;
+    font-size: 3.35mm;
+    line-height: 1.42;
+    color: #c7dbd3;
+    word-break: keep-all;
+}
+#page-11 .beauty-lessons-label {
+    padding-top: 2.4mm;
+    border-top: 1px solid #7a9c9268;
+}
+#page-11 .beauty-lessons-list {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    flex: 1;
+    min-height: 0;
+    margin-top: 1.5mm;
+}
+#page-11 .beauty-lesson {
+    display: grid;
+    grid-template-columns: 7mm minmax(0, 1fr);
+    gap: 1.5mm;
+    align-items: center;
+    padding: .7mm 0;
+    border-top: 1px solid #7a9c9258;
+}
+#page-11 .beauty-lesson > span {
+    color: #d8f39d;
+    font: 800 3.2mm "Pretendard Variable", sans-serif;
+}
+#page-11 .beauty-lesson p {
+    font-size: 3.28mm;
+    line-height: 1.28;
+    color: #c7dbd3;
+    white-space: nowrap;
+}
+#page-11 .beauty-lesson strong {
+    display: block;
+    margin-bottom: .3mm;
+    color: #f5f8ee;
+    font-size: 3.55mm;
+    font-weight: 800;
+}
+#page-11 .beauty-next-step {
+    flex: none;
+    margin-top: 1mm;
+    padding-top: 2mm;
+    border-top: 1px solid #7a9c9268;
+    font-size: 2.85mm;
+    line-height: 1.35;
+    color: #9fbbb2;
+    word-break: keep-all;
+}
+
 @media screen {
     .editorial-page { box-shadow: 0 7mm 18mm #00000027; }
     .page-wrap { margin-bottom: calc(18px * var(--page-scale)); }
