@@ -152,22 +152,30 @@
     <header class="doc-head"><span class="doc-brand">PORTFOLIO</span><span>CASE STUDY 02 <b> / </b> DECISION &amp; EVIDENCE</span></header>
     <div class="doc-content">
       <div class="section-label">04 <span>/</span> CAREFLOW AI — VERIFICATION</div>
-      <div class="page-title-line"><div><h2>“잘 답했다”가 아니라<br><em>“무엇을 근거로 답했나”</em>를 측정.</h2></div><div class="side-intro">동일 개발용 질문 집합에 대한<br>검색 근거 정확도 회귀 검증</div></div>
+      <div class="page-title-line"><div><h2>“잘 답했다”가 아니라<br><em>“무엇을 근거로 답했나”</em>를 측정.</h2></div><div class="side-intro">동일 개발용 질문 집합 회귀 검증<br>추가 CSV 질문 Top-1 9/9<br>실제 GPT·CRAG·Self-RAG 3/3</div></div>
       <div class="metric-row three"><div class="metric-box"><strong>10 <i>/ 16</i></strong><span>초기 기대 문구 일치</span><small>약관 질문, 개발 초기</small></div><div class="metric-box accent-metric"><strong>16 <i>/ 16</i></strong><span>동일 질문 Top-1 근거</span><small>검색 구조 보완 후</small></div><div class="metric-box"><strong>8 <i>/ 8</i></strong><span>모호·무관 질문 보류</span><small>사전 작성된 부정 사례</small></div></div>
-      <div class="two-cols deeper-grid">
+      <div class="two-cols deeper-grid careflow-evidence-grid">
         <div class="panel white-panel">
-          <div class="block-label">WHAT I CHANGED</div>
-          <h3>잘못된 검색을 더 좋은 답변으로<br>덮지 않았습니다.</h3>
-          <div class="case-row"><span>문제</span><p>반품 배송비 문의가 일반 배송비 문의로 잘못 분기되고, 포인트 만료 문의는 적절한 근거를 놓침.</p></div>
-          <div class="case-row"><span>판단</span><p>키워드·도메인 관련성 및 검색 후보를 교정. FAQ·상품 CSV 100행과 가상 약관 20개를 구분해 검색.</p></div>
-          <div class="case-row"><span>방어</span><p>검증 전 스트리밍을 피하고, 근거 검사 뒤 결과만 전달. 미해결 문의는 관리자가 나중에 답변을 보완할 수 있도록 별도 관리 흐름 마련.</p></div>
+          <div class="careflow-evidence-head">
+            <div class="block-label">WHAT I CHANGED</div>
+            <h3>잘못된 검색을 더 좋은 답변으로<br>덮지 않았습니다.</h3>
+          </div>
+          <div class="careflow-row-list">
+            <div class="case-row"><span>문제</span><p>반품 배송비 문의가 일반 배송비 문의로 잘못 분기되고, 포인트 만료 문의는 적절한 근거를 놓침.</p></div>
+            <div class="case-row"><span>판단</span><p>키워드·도메인 관련성 및 검색 후보를 교정. FAQ·상품 CSV 100행과 가상 약관 20개를 구분해 검색.</p></div>
+            <div class="case-row"><span>방어</span><p>검증 전 스트리밍을 피하고, 근거 검사 뒤 결과만 전달. 미해결 문의는 관리자가 나중에 답변을 보완할 수 있도록 별도 관리 흐름 마련.</p></div>
+          </div>
         </div>
-        <div class="panel ink-panel">
-          <div class="micro muted-lime">REAL MODEL + REPRODUCIBLE QA</div>
-          <h3 class="light-heading">검색·답변을 나눠 검증</h3>
-          <div class="thin-stats"><div><b>9/9</b><span>추가 CSV 질문 Top-1</span></div><div><b>3/3</b><span>실제 GPT·CRAG·Self-RAG 소수 사례</span></div></div>
-          <p class="body-sm soft">실제 모델의 답변 경로, 근거 ID, 보류 사례를 CI·운영 API·PC/모바일 브라우저 테스트로 구분해 확인했습니다.</p>
-          <p class="caution on-dark">이 수치는 실습자료를 보고 구성한 회귀 질문의 결과입니다. 실제 고객센터 정확도·상담 시간 절감은 측정하지 않았습니다.</p>
+        <div class="panel ink-panel careflow-retrospective-panel">
+          <div class="careflow-evidence-head">
+            <div class="micro muted-lime">RETROSPECTIVE / LESSONS LEARNED</div>
+            <p class="careflow-retrospective-lead">AI의 문장보다 중요한 것은 <strong>올바른 근거를 찾고, 확인되지 않은 답변을 멈추는 과정</strong>이었습니다.</p>
+          </div>
+          <div class="careflow-retrospective-list">
+            <div class="careflow-retrospective-item"><span>01</span><p><strong>검색의 오류는 답변으로 덮을 수 없다</strong>배송비 문의를 잘못 분류한 사례를 통해 검색 후보와 관련성을 먼저 바로잡아야 했습니다.</p></div>
+            <div class="careflow-retrospective-item"><span>02</span><p><strong>모를 때 답하지 않는 것도 품질이다</strong>근거가 충분한지 확인한 뒤 답변하고, 불확실한 문의는 보류하도록 흐름을 바꿨습니다.</p></div>
+            <div class="careflow-retrospective-item"><span>03</span><p><strong>답하지 못한 문의도 남겨야 한다</strong>미해결 질문을 버리지 않고 관리자가 답변을 보완할 수 있는 관리 흐름으로 연결했습니다.</p></div>
+          </div>
         </div>
       </div>
     </div>
