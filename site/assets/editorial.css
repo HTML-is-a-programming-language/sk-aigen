@@ -184,6 +184,7 @@
 /* Page 03 — spacious project index without a separate headline. */
 #page-03 .project-index-grid {
     margin-top: 9mm;
+    margin-bottom: 0;
 }
 #page-03 .project-index-card h3 {
     font-size: 6.3mm;
@@ -195,13 +196,12 @@
 .project-index-card:nth-child(2), .project-index-card:nth-child(3) { background: #1d3e3d; }
 .project-index-card:hover { background: #284e4a; text-decoration: none!important; }
 .index-top { display: flex; justify-content: space-between; align-items: flex-start; font: 700 2.55mm Arial; color: #bad592; letter-spacing: .11em; }
-.index-icon { color: #d1ef94; font-size: 5.5mm; line-height: 1; }
+.index-icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 9mm; width: 9mm; height: 9mm; color: #d1ef94; }
+.index-icon svg { display: block; width: 8mm; height: 8mm; fill: currentColor; }
 .project-index-card h3 { color: #f3f6ec; font: 800 7mm/1.05 Arial, sans-serif; letter-spacing: -.055em; margin: 4mm 0 2.5mm; }
 .project-index-card p { margin: 0; font-size: 3mm; line-height: 1.6; color: #c3d5cf; }
 .index-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 4mm; border-top: 1px solid #97b0a054; color: #95b3a9; font-size: 2.5mm; }
 .index-foot b { color: #d1ed97; font: 800 2.9mm Arial; }
-.note-dark { display: flex; gap: 7mm; align-items: center; margin-top: 5mm; flex: none; font-size: 2.7mm; color: #a7bfba; }
-.note-dark span:first-child { color: #d1ec8f; font: 800 2.5mm Arial; letter-spacing: .1em; }
 /* project intro pages */
 .case-layout { flex: 1; max-height: 87mm; min-height: 0; }
 .case-copy { padding: 2mm 1.5mm 0 0; display: flex; flex-direction: column; }
@@ -364,17 +364,17 @@
 .horizon-box { flex: none; display: grid; grid-template-columns: 44mm 1fr; align-items: center; gap: 5mm; margin-top: 6mm; padding: 5mm 6mm; background: #e4ede4; border-radius: 2mm; border-left: 1mm solid #5ca88f; }
 .horizon-box p { margin: 0; color: #416764; font-size: 3.1mm; line-height: 1.6; }
 /* Dense evidence pages: smaller spacing keeps explanations wholly inside A4. */
-#page-05 .deeper-grid .panel { padding: 4mm; }
-#page-05 .deeper-grid .panel h3 { font-size: 4.05mm; margin: 1.6mm 0 2mm; line-height: 1.29; }
-#page-05 .case-row { padding: 1.25mm 0; grid-template-columns: 12mm auto; gap: 2mm; }
-#page-05 .case-row p { font-size: 2.52mm; line-height: 1.47; }
-#page-05 .case-row > span { font-size: 2.5mm; }
-#page-05 .thin-stats { margin: 2mm 0; gap: 2mm; }
-#page-05 .thin-stats > div { padding: 2.4mm; gap: .7mm; }
-#page-05 .thin-stats b { font-size: 6.2mm; }
-#page-05 .thin-stats span { font-size: 2.4mm; line-height: 1.26; }
-#page-05 .body-sm { font-size: 2.63mm; line-height: 1.5; }
-#page-05 .caution.on-dark { font-size: 2.25mm; line-height: 1.4; padding-top: 2mm; margin-top: 2mm; }
+#page-07 .deeper-grid .panel { padding: 4mm; }
+#page-07 .deeper-grid .panel h3 { font-size: 4.05mm; margin: 1.6mm 0 2mm; line-height: 1.29; }
+#page-07 .case-row { padding: 1.25mm 0; grid-template-columns: 12mm auto; gap: 2mm; }
+#page-07 .case-row p { font-size: 2.52mm; line-height: 1.47; }
+#page-07 .case-row > span { font-size: 2.5mm; }
+#page-07 .thin-stats { margin: 2mm 0; gap: 2mm; }
+#page-07 .thin-stats > div { padding: 2.4mm; gap: .7mm; }
+#page-07 .thin-stats b { font-size: 6.2mm; }
+#page-07 .thin-stats span { font-size: 2.4mm; line-height: 1.26; }
+#page-07 .body-sm { font-size: 2.63mm; line-height: 1.5; }
+#page-07 .caution.on-dark { font-size: 2.25mm; line-height: 1.4; padding-top: 2mm; margin-top: 2mm; }
 #page-11 .operations-grid .panel { padding: 5.5mm; }
 #page-11 .ops-flow { margin: 2.8mm 0; }
 #page-11 .ops-flow div { padding: 3mm; }
