@@ -77,11 +77,11 @@
 .small-cap { font-size: 2.6mm; letter-spacing: .04em; font-weight: 650; color: #d7e6dd; }
 .small-cap span { color: #cdec92; margin: 0 1.8mm; }
 .horizontal-line { height: 1px; background: #739c8d67; margin: 8mm 0 6mm; }
-.about-columns { flex: 1; max-height: 110mm; }
-.quote-panel { display: flex; flex-direction: column; }
-.quote-panel .statement { font-size: 6.2mm; line-height: 1.55; color: #eff5e7; margin: 8mm 0 0; letter-spacing: -.053em; }
-.quote-panel .statement strong { color: #cfec91; }
-.quote-panel .small-cap { margin-top: auto; }
+.about-columns { flex: 1; max-height: none; margin-top: 9mm; margin-bottom: 2mm; }
+.quote-panel { display: flex; flex-direction: column; justify-content: center; padding: 12mm 11mm; border-left: 1.4mm solid #b9e58e; }
+.quote-panel .about-lead { color: #f0f6ed; font-size: 5.15mm; line-height: 1.72; font-weight: 550; letter-spacing: -.035em; word-break: keep-all; }
+.quote-panel .about-lead strong { color: #d6f19a; font-weight: 800; }
+.quote-panel .small-cap { align-self: flex-start; margin-top: 10mm; padding-top: 5mm; border-top: 1px solid #739c8d67; font-size: 2.8mm; letter-spacing: .025em; }
 .stacked-approach { display: grid; grid-template-rows: repeat(4, 1fr); gap: 2.7mm; }
 .step-card { background: white; border: 1px solid #dce8e3; border-radius: 3mm; display: flex; gap: 5mm; padding: 4.7mm 5.5mm; min-height: 0; }
 .step-index { width: 13mm; height: 9mm; flex-shrink: 0; display: grid; place-items: center; font: 800 4.3mm Arial; color: #286c68; border-right: 1px solid #d1dfd7; }
