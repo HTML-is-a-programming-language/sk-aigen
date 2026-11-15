@@ -14,8 +14,8 @@ if (!markup.includes(placeholder)) {
 }
 
 const chapterPages = (chapters.match(/<article class="page editorial-page/g) || []).length;
-if (chapterPages !== 13) {
-    throw new Error('Expected 13 portfolio chapters, received ' + chapterPages);
+if (chapterPages !== 12) {
+    throw new Error('Expected 12 portfolio chapters, received ' + chapterPages);
 }
 
 const built = markup.replace(
@@ -25,8 +25,8 @@ const built = markup.replace(
         '</div>'
 );
 const totalPages = (built.match(/<article class="page /g) || []).length;
-if (totalPages !== 14) {
-    throw new Error('Expected 14 published pages; received ' + totalPages);
+if (totalPages !== 13) {
+    throw new Error('Expected 13 published pages; received ' + totalPages);
 }
 writeFileSync(indexPath, built, 'utf8');
 console.log('Pre-rendered ' + totalPages + ' pages in site/index.html for GitHub Pages.');
