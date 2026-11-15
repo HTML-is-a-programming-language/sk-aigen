@@ -562,6 +562,49 @@
 .closing-identity p { font-size: 3.50mm; }
 .closing-disclaimer { font-size: 3.05mm; line-height: 1.4; }
 
+/* Page 05: match verification and retrospective rows by exact grid tracks. */
+#page-05 .sample-evidence-grid .panel {
+    display: grid;
+    grid-template-rows: 21mm minmax(0, 1fr);
+    align-content: stretch;
+    padding: 3.7mm 4.5mm;
+}
+#page-05 .sample-section-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.3mm;
+    min-width: 0;
+    min-height: 0;
+}
+#page-05 .sample-section-head h3,
+#page-05 .sample-evidence-panel .micro,
+#page-05 .sample-section-head .retrospective-lead {
+    margin: 0;
+}
+#page-05 .sample-row-list,
+#page-05 .retrospective-list {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    min-height: 0;
+    align-items: stretch;
+    margin: 0;
+}
+#page-05 .sample-row-list .case-row,
+#page-05 .retrospective-list .retrospective-item {
+    align-items: center;
+    min-height: 0;
+    padding: .85mm 0;
+}
+#page-05 .sample-row-list .case-row {
+    grid-template-columns: 12mm minmax(0, 1fr);
+    gap: 2.5mm;
+}
+#page-05 .retrospective-list .retrospective-item {
+    grid-template-columns: 7mm minmax(0, 1fr);
+    gap: 1.7mm;
+}
+
 @media screen {
     .editorial-page { box-shadow: 0 7mm 18mm #00000027; }
     .page-wrap { margin-bottom: calc(18px * var(--page-scale)); }
