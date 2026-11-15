@@ -67,13 +67,13 @@ try {
     }
     console.log('PDF typeface: Pretendard Variable (verified loaded)');
     const pageCount = await page.locator('article.page').count();
-    if (pageCount !== 14) {
-        throw new Error('Expected 14 A4 pages but rendered ' + pageCount);
+    if (pageCount !== 13) {
+        throw new Error('Expected 13 A4 pages but rendered ' + pageCount);
     }
 
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
-            const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item')]
+            const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
                 .filter(Boolean);
             return elements
                 .filter((node) => node.scrollHeight > node.clientHeight + 7)
@@ -100,7 +100,7 @@ try {
         margin: { top: '0', bottom: '0', left: '0', right: '0' }
     });
     await page.locator('.page').first().screenshot({ path: preview, animations: 'disabled' });
-    for (const index of [2, 5, 7, 9, 11, 14]) {
+    for (const index of [2, 5, 7, 9, 11, 12, 13]) {
         const file = resolve(repoRoot, 'exports/page-' + String(index).padStart(2, '0') + '.png');
         await page.locator('.page').nth(index - 1).screenshot({ path: file, animations: 'disabled' });
     }
