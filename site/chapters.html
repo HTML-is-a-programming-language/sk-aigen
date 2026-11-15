@@ -87,16 +87,21 @@
       </div>
       <div class="two-cols deeper-grid sample-evidence-grid">
         <div class="panel white-panel">
-          <div class="block-label">REAL SAMPLE / END-TO-END</div>
-          <h3>운영 API에서 실제 샘플 3페이지를 생성</h3>
-          <div class="case-row"><span>입력</span><p>서비스 기본 sample2.pdf(모델 성능 모니터링)를 사용해 3페이지 텍스트를 추출하고 AI 대본을 생성.</p></div>
-          <div class="case-row"><span>검토</span><p>Writer·Reviewer 실제 호출로 대본 3건 검토. 승인 전에는 다운로드가 없었고, 승인 API 요청 1회 후 영상 제작.</p></div>
-          <div class="case-row"><span>결과</span><p>3페이지 MP4 다운로드 및 H.264/AAC 확인. 테스트 작업 삭제 후 조회 불가(404)까지 검증.</p></div>
+          <div class="sample-section-head">
+            <div class="block-label">REAL SAMPLE / END-TO-END</div>
+            <h3>운영 API에서 실제 샘플 3페이지를 생성</h3>
+          </div>
+          <div class="sample-row-list">
+            <div class="case-row"><span>입력</span><p>서비스 기본 sample2.pdf(모델 성능 모니터링)를 사용해 3페이지 텍스트를 추출하고 AI 대본을 생성.</p></div>
+            <div class="case-row"><span>검토</span><p>Writer·Reviewer 실제 호출로 대본 3건 검토. 승인 전에는 다운로드가 없었고, 승인 API 요청 1회 후 영상 제작.</p></div>
+            <div class="case-row"><span>결과</span><p>3페이지 MP4 다운로드 및 H.264/AAC 확인. 테스트 작업 삭제 후 조회 불가(404)까지 검증.</p></div>
+          </div>
         </div>
         <div class="panel ink-panel sample-evidence-panel">
-          <div class="micro muted-lime">RETROSPECTIVE / LESSONS LEARNED</div>
-          <h3 class="light-heading">AI의 자동화에<br>사람의 판단을 더하다.</h3>
-          <p class="retrospective-lead">PDF를 영상으로 변환하는 기술보다 중요한 것은 <strong>사용자가 결과를 확인하고 직접 완성할 수 있는 경험</strong>이었습니다.</p>
+          <div class="sample-section-head">
+            <div class="micro muted-lime">RETROSPECTIVE / LESSONS LEARNED</div>
+            <p class="retrospective-lead">PDF를 영상으로 변환하는 기술보다 중요한 것은 <strong>사용자가 결과를 확인하고 직접 완성할 수 있는 경험</strong>이었습니다.</p>
+          </div>
           <div class="retrospective-list">
             <div class="retrospective-item"><span>01</span><p><strong>AI 결과를 그대로 전달하지 않기</strong>대본 작성과 AI 검토 뒤 사용자가 직접 수정하고 승인하는 단계를 설계했습니다.</p></div>
             <div class="retrospective-item"><span>02</span><p><strong>중단되어도 이어서 진행하기</strong>페이지별 생성 결과를 검증하고 성공한 작업을 재사용하도록 구현했습니다.</p></div>
