@@ -2,22 +2,21 @@
 
 **[웹 포트폴리오](https://html-is-a-programming-language.github.io/sk-aigen/)** · **[PDF 보기](https://html-is-a-programming-language.github.io/sk-aigen/downloads/sk-aigen-portfolio.pdf)**
 
-기존의 A4 가로 표지를 유지하면서, **4개 실제 프로젝트의 문제 발견 → 기술 선택 → 구현 → 검증 → 한계**를 보여주는 14페이지 포트폴리오로 확장했습니다.
+기존의 A4 가로 표지를 유지하면서, **4개 실제 프로젝트의 문제 발견 → 기술 선택 → 구현 → 검증 → 한계**를 보여주는 13페이지 포트폴리오로 구성했습니다.
 
 ## 페이지별 구성
 
 | 페이지 | 콘텐츠 |
 |---|---|
-| 01 | 표지 — 사용자 문제를 서비스로 구현하고 검증하는 개발자 |
-| 02 | 자기소개 — 약 4년 웹 개발, KT AIVLE AI, 문제 해결 과정 |
-| 03 | 프로젝트 지도 — CareFlow AI / SurveyLens / LectureForge / BeautyRanks |
-| 04–05 | CareFlow AI — 근거 중심 챗봇, 검색/보류/검증 결과 |
-| 06–07 | SurveyLens — 설문 만족도 예측, 불만족 Recall 실험, 개선 가설 |
-| 08–09 | LectureForge — 사람 승인 대본 → TTS → MP4, 실제 E2E |
-| 10–11 | BeautyRanks — 성분 평가 구조, 상품 수집 장애 대응 |
-| 12 | 공통 기술 판단 — 근거, 사람의 제어, 장애 복구 |
-| 13 | SK AIGEN 지원 방향 — 창업·비즈니스 / 사회·공공·교육 |
-| 14 | 실제 프로젝트 웹사이트, GitHub 소스 및 검증 링크 |
+| 01 | 표지 — 사용자 문제를 발견하고 서비스로 구현하는 개발자 |
+| 02 | 자기소개 — 웹 개발 경험과 KT AIVLE, 문제 해결 방식 |
+| 03 | 4개 프로젝트 소개 — LectureForge / CareFlow AI / SurveyLens / BeautyRanks |
+| 04–05 | LectureForge — PDF 기반 AI 강의영상, 사람 검토·승인, 실제 검증 |
+| 06–07 | CareFlow AI — 근거 검색·보류, 오류 원인 분석과 회고 |
+| 08–09 | SurveyLens — 고객 만족도 예측, 불만족 Recall, 회고 |
+| 10–11 | BeautyRanks — 개인 경험에서 출발한 성분 비교, 평가 근거 개선 |
+| 12 | 성장 및 협업 경험 — 방향 조율, 실패 극복, 학습 후 개선 |
+| 13 | 직무 연관성·링크 — 적용 역량, 4개 프로젝트, GitHub·연락 경로 |
 
 상세 근거는 [페이지·데이터 출처 문서](docs/PORTFOLIO_STRUCTURE.md)에 기록합니다.
 
@@ -30,7 +29,7 @@
 - 디자인: site/assets/styles.css, site/assets/editorial.css
 - PDF 렌더: scripts/export-pdf.mjs
 - GitHub Pages 배포: .github/workflows/pages.yml
-- 14페이지 PDF·넘침/텍스트 QA: .github/workflows/portfolio-checks.yml
+- 13페이지 PDF·넘침/텍스트 QA: .github/workflows/portfolio-checks.yml
 
 로컬 실행:
 
