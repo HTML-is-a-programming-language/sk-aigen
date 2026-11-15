@@ -171,6 +171,50 @@ try {
         throw new Error('Requested copy line limits failed: ' + JSON.stringify(invalidCopy));
     }
 
+    // Validate only the requested final-page and BeautyRanks changes.
+    const requestedFinalEdits = await page.evaluate(() => {
+        const measure = (selector) => {
+            const element = document.querySelector(selector);
+            if (!element) return {missing: true};
+            const style = getComputedStyle(element);
+            return {
+                lines: Math.round(element.getBoundingClientRect().height / parseFloat(style.lineHeight)),
+                overflow: element.scrollWidth > element.clientWidth + 2
+            };
+        };
+        const panel = document.querySelector('#page-11 .beauty-before-after');
+        const before = panel?.querySelector('.beauty-before-after-side:first-child');
+        const arrow = panel?.querySelector(':scope > b');
+        const after = panel?.querySelector('.beauty-before-after-side:last-child');
+        const gap = (left, right) =>
+            left && right ? right.getBoundingClientRect().left - left.getBoundingClientRect().right : -1;
+        return {
+            technicalNote: measure('#page-11 .beauty-watchdog'),
+            roleFit: measure('#page-13 .fit-skill-card:nth-child(2) > p'),
+            preferences: measure('#page-13 .side-intro'),
+            beforeText: measure('#page-11 .beauty-before-after-side:first-child p'),
+            afterText: measure('#page-11 .beauty-before-after-side:last-child p'),
+            comparisonGapBefore: gap(before, arrow),
+            comparisonGapAfter: gap(arrow, after),
+            comparisonOverflow: !!panel && panel.scrollWidth > panel.clientWidth + 2,
+            contactDescriptionRemoved: !document.querySelector('#page-13 .fit-contact-name p')
+        };
+    });
+    console.log('TARGETED_LAYOUT_CHECK:', JSON.stringify(requestedFinalEdits));
+    if (
+        requestedFinalEdits.technicalNote.lines !== 1 || requestedFinalEdits.technicalNote.overflow ||
+        requestedFinalEdits.roleFit.lines !== 2 || requestedFinalEdits.roleFit.overflow ||
+        requestedFinalEdits.preferences.lines !== 3 || requestedFinalEdits.preferences.overflow ||
+        requestedFinalEdits.beforeText.lines !== 1 || requestedFinalEdits.beforeText.overflow ||
+        requestedFinalEdits.afterText.lines !== 1 || requestedFinalEdits.afterText.overflow ||
+        requestedFinalEdits.comparisonGapBefore < 2 ||
+        requestedFinalEdits.comparisonGapAfter < 2 ||
+        requestedFinalEdits.comparisonOverflow ||
+        !requestedFinalEdits.contactDescriptionRemoved
+    ) {
+        throw new Error('Requested 13-page portfolio typography and spacing validation failed');
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
