@@ -624,6 +624,7 @@
 #page-07 .careflow-evidence-head h3,
 #page-07 .careflow-evidence-head .careflow-retrospective-lead {
     margin: 0;
+    white-space: nowrap;
 }
 #page-07 .careflow-retrospective-lead {
     color: #c8ded5;
@@ -811,11 +812,11 @@
     word-break: keep-all;
 }
 #page-11 .beauty-before-after {
+    display: flex;
     flex: none;
-    display: grid;
-    grid-template-columns: 41mm 5mm minmax(0, 1fr);
-    gap: 2mm;
     align-items: center;
+    justify-content: space-between;
+    gap: 2mm;
     margin-top: 2.4mm;
     padding: 2.2mm 2.6mm;
     border: 1px solid #cddfdd;
@@ -825,6 +826,7 @@
 #page-11 .beauty-before-after-side {
     display: flex;
     align-items: center;
+    flex: none;
     gap: 1.5mm;
     min-width: 0;
 }
@@ -843,6 +845,7 @@
     letter-spacing: -.025em;
 }
 #page-11 .beauty-before-after > b {
+    flex: 0 0 5mm;
     font-size: 4mm;
     text-align: center;
     color: #4e8d7b;
