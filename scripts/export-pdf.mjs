@@ -222,6 +222,30 @@ try {
         throw new Error('Requested 13-page portfolio typography and spacing validation failed');
     }
 
+    const careflowTopRankLayout = await page.evaluate(() => {
+        const inspect = (selector) => {
+            const el = document.querySelector(selector);
+            const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
+            return {
+                lines: Math.round(el.getBoundingClientRect().height / lineHeight),
+                overflow: el.scrollWidth > el.clientWidth + 2
+            };
+        };
+        return {
+            intro: inspect('#page-07 .side-intro'),
+            metricLabel: inspect('#page-07 .metric-row .accent-metric > span'),
+            growth: inspect('#page-12 .experience-card:nth-child(2) .experience-insight')
+        };
+    });
+    console.log('TOP_RANK_PLAIN_LANGUAGE_LAYOUT:', JSON.stringify(careflowTopRankLayout));
+    if (
+        careflowTopRankLayout.intro.lines !== 3 || careflowTopRankLayout.intro.overflow ||
+        careflowTopRankLayout.metricLabel.lines !== 1 || careflowTopRankLayout.metricLabel.overflow ||
+        careflowTopRankLayout.growth.lines > 2 || careflowTopRankLayout.growth.overflow
+    ) {
+        throw new Error('CareFlow plain-language labels do not fit existing page layout');
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
