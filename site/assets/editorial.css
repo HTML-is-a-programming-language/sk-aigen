@@ -178,6 +178,7 @@
     font-size: 2.95mm;
     line-height: 1.5;
     color: #607872;
+    white-space: nowrap;
 }
 
 .project-index-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(2,1fr); gap: 4mm; flex: 1; min-height: 0; }
