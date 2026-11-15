@@ -358,21 +358,21 @@
 .evidence-table + .deeper-grid { max-height: 67mm; }
 /* Page 05: authentic sample2.pdf production evidence. */
 #page-05 .sample-evidence-grid { max-height: 79mm; }
-#page-05 .sample-evidence-grid .panel { padding: 5mm 5.8mm; }
+#page-05 .sample-evidence-grid .panel { padding: 4.2mm 5.2mm; }
 #page-05 .sample-evidence-grid .panel h3 { font-size: 4.35mm; line-height: 1.32; margin: 2mm 0 3.5mm; }
 #page-05 .sample-evidence-grid .case-row { padding: 2mm 0; grid-template-columns: 12mm minmax(0,1fr); gap: 2.5mm; }
 #page-05 .sample-evidence-grid .case-row > span { font-size: 2.7mm; }
 #page-05 .sample-evidence-grid .case-row p { font-size: 2.65mm; line-height: 1.47; }
 #page-05 .sample-evidence-panel { display: flex; flex-direction: column; gap: 0; }
-#page-05 .sample-evidence-panel .micro { margin-bottom: 3mm; }
-#page-05 .sample-evidence-panel h3 { color: #eff7ec; font-size: 5.1mm; line-height: 1.36; margin: 0 0 4mm; letter-spacing: -.04em; }
-#page-05 .retrospective-lead { color: #d8e8dd; font-size: 3.08mm; line-height: 1.65; letter-spacing: -.015em; word-break: keep-all; margin: 0 0 4mm; }
+#page-05 .sample-evidence-panel .micro { margin-bottom: 1.6mm; }
+#page-05 .sample-evidence-panel h3 { color: #eff7ec; font-size: 4.6mm; line-height: 1.27; margin: 0 0 2.3mm; letter-spacing: -.04em; }
+#page-05 .retrospective-lead { color: #d8e8dd; font-size: 2.85mm; line-height: 1.48; letter-spacing: -.015em; word-break: keep-all; margin: 0 0 2.4mm; }
 #page-05 .retrospective-lead strong { color: #d8f39d; font-weight: 800; }
 #page-05 .retrospective-list { display: flex; flex-direction: column; flex: 1; justify-content: space-evenly; min-height: 0; border-top: 1px solid #8eb3a160; }
-#page-05 .retrospective-item { display: grid; grid-template-columns: 7mm minmax(0,1fr); gap: 3mm; align-items: start; padding: 2.4mm 0; border-bottom: 1px solid #8eb3a126; }
+#page-05 .retrospective-item { display: grid; grid-template-columns: 7mm minmax(0,1fr); gap: 2.5mm; align-items: start; padding: 1.35mm 0; border-bottom: 1px solid #8eb3a126; }
 #page-05 .retrospective-item > span { font: 800 3mm Arial, sans-serif; color: #d8f39d; padding-top: .4mm; }
-#page-05 .retrospective-item p { margin: 0; color: #c8dbd2; font-size: 2.75mm; line-height: 1.48; word-break: keep-all; }
-#page-05 .retrospective-item strong { display: block; color: #f4f9ee; font-size: 2.95mm; margin-bottom: .8mm; }
+#page-05 .retrospective-item p { margin: 0; color: #c8dbd2; font-size: 2.65mm; line-height: 1.38; word-break: keep-all; }
+#page-05 .retrospective-item strong { display: block; color: #f4f9ee; font-size: 2.8mm; margin-bottom: .45mm; }
 #page-05 .metric-box strong { font-size: 8.6mm; }
 
 /* Survey UI */
