@@ -171,6 +171,53 @@ try {
         throw new Error('Requested copy line limits failed: ' + JSON.stringify(invalidCopy));
     }
 
+    const endingLayout = await page.evaluate(() => {
+        const lineCount = (selector) => {
+            const element = document.querySelector(selector);
+            if (!element) return {missing: true};
+            const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
+            return {
+                lines: Math.round(element.getBoundingClientRect().height / lineHeight),
+                overflows: element.scrollWidth > element.clientWidth + 2
+            };
+        };
+        const compare = document.querySelector('#page-11 .beauty-before-after');
+        const before = compare?.querySelector('.beauty-state-before');
+        const arrow = compare?.querySelector(':scope > b');
+        const after = compare?.querySelector('.beauty-state-after');
+        const measuredGap = (left, right) =>
+            left && right ? right.getBoundingClientRect().left - left.getBoundingClientRect().right : -1;
+        const textOverflow = (element) =>
+            element && element.scrollWidth > element.clientWidth + 2;
+        return {
+            watchdog: lineCount('#page-11 .beauty-watchdog'),
+            roleFit: lineCount('#page-13 .fit-skill-card:nth-child(2) > p'),
+            sideIntro: lineCount('#page-13 .side-intro'),
+            afterText: lineCount('#page-11 .beauty-state-after p'),
+            comparison: {
+                beforeToArrow: measuredGap(before, arrow),
+                arrowToAfter: measuredGap(arrow, after),
+                beforeTextOverflow: textOverflow(before?.querySelector('p')),
+                afterTextOverflow: textOverflow(after?.querySelector('p'))
+            },
+            removedContactDescription: !document.querySelector('#page-13 .fit-contact-name p')
+        };
+    });
+    console.log('FINAL_COPY_LAYOUT:', JSON.stringify(endingLayout));
+    if (
+        endingLayout.watchdog.lines !== 1 || endingLayout.watchdog.overflows ||
+        endingLayout.roleFit.lines !== 2 || endingLayout.roleFit.overflows ||
+        endingLayout.sideIntro.lines !== 3 || endingLayout.sideIntro.overflows ||
+        endingLayout.afterText.lines !== 1 || endingLayout.afterText.overflows ||
+        endingLayout.comparison.beforeToArrow < 2 ||
+        endingLayout.comparison.arrowToAfter < 2 ||
+        endingLayout.comparison.beforeTextOverflow ||
+        endingLayout.comparison.afterTextOverflow ||
+        !endingLayout.removedContactDescription
+    ) {
+        throw new Error('Final requested typography or comparison spacing check failed');
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
