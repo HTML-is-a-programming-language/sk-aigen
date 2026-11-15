@@ -34,14 +34,6 @@ for (const filename of ['instructor.png', 'support.png', 'survey.png', 'beauty.p
     markup = markup.replaceAll('src="./assets/project-previews/' + filename + '"', 'src="' + dataUrl + '"');
 }
 
-const sampleFrame = resolve(repoRoot, 'site/assets/project-previews/sample2-frame.jpg');
-if (!existsSync(sampleFrame)) {
-    throw new Error('Authentic sample2 video frame is missing.');
-}
-markup = markup.replaceAll(
-    'src="./assets/project-previews/sample2-frame.jpg"',
-    'src="data:image/jpeg;base64,' + readFileSync(sampleFrame).toString('base64') + '"'
-);
 
 mkdirSync(dirname(target), { recursive: true });
 const browser = await chromium.launch({ headless: true });
