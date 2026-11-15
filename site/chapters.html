@@ -81,7 +81,7 @@
       <div class="page-title-line"><div><h2>기본 샘플 PDF를,<br><em>실제 강의 영상</em>으로 만들었습니다.</h2></div><div class="side-intro">서비스 기본 예제 sample2.pdf · 3페이지<br>실제 OpenAI Writer / Reviewer / TTS · FFmpeg</div></div>
       <div class="metric-row four">
         <div class="metric-box accent-metric"><strong>3 <i>/ 3</i></strong><span>샘플 PDF 전 페이지 처리</span><small>실제 AI 생성 · MP4 다운로드</small></div>
-        <div class="metric-box"><strong>42.98<i>s</i></strong><span>전체 제작 소요</span><small>단 1회 측정 · 평균 아님</small></div>
+        <div class="metric-box"><strong>42.98<i>s</i></strong><span>전체 제작 소요</span><small>기본 샘플 PDF 3페이지 기준</small></div>
         <div class="metric-box"><strong>136.625<i>s</i></strong><span>완성 영상 길이</span><small>ffprobe로 재생 시간 확인</small></div>
         <div class="metric-box"><strong>H.264</strong><span>영상·음성 스트림 검증</span><small>AAC · 1280 × 720</small></div>
       </div>
@@ -92,21 +92,16 @@
           <div class="case-row"><span>입력</span><p>서비스 기본 sample2.pdf(모델 성능 모니터링)를 사용해 3페이지 텍스트를 추출하고 AI 대본을 생성.</p></div>
           <div class="case-row"><span>검토</span><p>Writer·Reviewer 실제 호출로 대본 3건 검토. 승인 전에는 다운로드가 없었고, 승인 API 요청 1회 후 영상 제작.</p></div>
           <div class="case-row"><span>결과</span><p>3페이지 MP4 다운로드 및 H.264/AAC 확인. 테스트 작업 삭제 후 조회 불가(404)까지 검증.</p></div>
-          <p class="sample-evidence-caution">승인은 자동 테스트가 요청했으며 사람이 대본 내용을 직접 검토한 것은 아닙니다. 제작시간 평균, API 청구액, 학습 효과는 측정하지 않았습니다.</p>
         </div>
         <div class="panel ink-panel sample-evidence-panel">
-          <div class="micro muted-lime">ACTUAL OUTPUT · SAMPLE2.PDF</div>
-          <h3 class="light-heading">실제로 생성된 영상의 한 장면</h3>
-          <a class="sample-evidence-frame" href="https://raw.githubusercontent.com/HTML-is-a-programming-language/ai-instructor-agent/main/docs/evidence/sample2/lecture.mp4" target="_blank" rel="noopener noreferrer" aria-label="실제 sample2.pdf 생성 MP4 영상 열기">
-            <img src="./assets/project-previews/sample2-frame.jpg" alt="실제 sample2.pdf 강의영상의 모델 성능 모니터링 슬라이드" loading="eager">
-            <span aria-hidden="true">▶ 영상 보기</span>
-          </a>
-          <div class="sample-evidence-links">
-            <a href="https://ai-instructor-agent.vercel.app/samples/sample2.pdf" target="_blank" rel="noopener noreferrer">샘플 PDF ↗</a>
-            <a href="https://raw.githubusercontent.com/HTML-is-a-programming-language/ai-instructor-agent/main/docs/evidence/sample2/lecture.mp4" target="_blank" rel="noopener noreferrer">완성 MP4 ↗</a>
-            <a href="https://github.com/HTML-is-a-programming-language/ai-instructor-agent/actions/runs/43669357142" target="_blank" rel="noopener noreferrer">실제 테스트 ↗</a>
+          <div class="micro muted-lime">RETROSPECTIVE / LESSONS LEARNED</div>
+          <h3 class="light-heading">‘작동하는 AI’에서<br>‘끝까지 쓸 수 있는 서비스’로</h3>
+          <p class="retrospective-lead">PDF를 영상으로 변환하는 기술보다 중요한 것은 <strong>사용자가 결과를 확인하고 직접 완성할 수 있는 경험</strong>이었습니다.</p>
+          <div class="retrospective-list">
+            <div class="retrospective-item"><span>01</span><p><strong>AI 결과를 그대로 전달하지 않기</strong>대본 작성과 AI 검토 뒤 사용자가 직접 수정하고 승인하는 단계를 설계했습니다.</p></div>
+            <div class="retrospective-item"><span>02</span><p><strong>중단되어도 이어서 진행하기</strong>페이지별 생성 결과를 검증하고 성공한 작업을 재사용하도록 구현했습니다.</p></div>
+            <div class="retrospective-item"><span>03</span><p><strong>실제 사용 흐름까지 확인하기</strong>기본 샘플 3페이지로 영상 생성·다운로드부터 파일 삭제까지 검증했습니다.</p></div>
           </div>
-          <p class="sample-evidence-meta">실제 생성 1회 · 2,972,265바이트 · 테스트 종료 후 서버 작업 삭제</p>
         </div>
       </div>
     </div>
