@@ -181,6 +181,16 @@
 }
 
 .project-index-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(2,1fr); gap: 4mm; flex: 1; min-height: 0; }
+/* Page 03 — spacious project index without a separate headline. */
+#page-03 .project-index-grid {
+    margin-top: 9mm;
+}
+#page-03 .project-index-card h3 {
+    font-size: 6.3mm;
+    line-height: 1.16;
+    letter-spacing: -.035em;
+    overflow-wrap: anywhere;
+}
 .project-index-card { display: flex; flex-direction: column; background: #17373a; border: 1px solid #5e79764c; padding: 6.5mm; border-radius: 3.2mm; position: relative; overflow: hidden; }
 .project-index-card:nth-child(2), .project-index-card:nth-child(3) { background: #1d3e3d; }
 .project-index-card:hover { background: #284e4a; text-decoration: none!important; }
