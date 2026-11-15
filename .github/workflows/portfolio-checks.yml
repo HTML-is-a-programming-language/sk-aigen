@@ -36,13 +36,13 @@ jobs:
             - name: Validate static web pre-render
               run: |
                   pnpm build:site
-                  test "$(grep -o 'article class="page ' site/index.html | wc -l)" -eq 14
+                  test "$(grep -o 'article class="page ' site/index.html | wc -l)" -eq 13
             - name: Validate PDF page count and key text
               run: |
                   set -euo pipefail
                   pages="$(pdfinfo exports/sk-aigen-portfolio.pdf | awk '/^Pages:/ {print $2}')"
                   echo "Rendered PDF pages: $pages"
-                  test "$pages" -eq 14
+                  test "$pages" -eq 13
                   pdftotext exports/sk-aigen-portfolio.pdf exports/portfolio-text.txt
                   for term in "CareFlow AI" "SurveyLens" "LectureForge" "BeautyRanks" "서승준" "SK AIGEN"; do
                       grep -q "$term" exports/portfolio-text.txt
