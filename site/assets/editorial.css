@@ -91,6 +91,94 @@
 .bottom-note { margin-top: 5mm; height: 10mm; display: flex; justify-content: space-between; align-items: center; gap: 4mm; border-top: 1px solid #c7d5c9; border-bottom: 1px solid #c7d5c9; }
 .bottom-note span { font: 800 2.2mm Arial; color: #547e76; letter-spacing: .09em; }
 .bottom-note strong { font-size: 3.4mm; color: #225d59; }
+/* Page 02: balanced introduction and process grid.
+   Keep the existing wording and isolate all refinements to this page. */
+#page-02 .about-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 59mm minmax(0, 1fr);
+    gap: 4mm;
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    margin-top: 8mm;
+    margin-bottom: 2mm;
+}
+#page-02 .quote-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 51mm;
+    align-items: center;
+    justify-content: initial;
+    gap: 9mm;
+    min-height: 0;
+    padding: 8mm 10mm;
+    border-left: 1.4mm solid #b9e58e;
+    border-radius: 3.2mm;
+}
+#page-02 .quote-panel .about-lead {
+    max-width: 190mm;
+    font-size: 4.65mm;
+    line-height: 1.66;
+    letter-spacing: -.035em;
+    color: #f0f6ed;
+}
+#page-02 .quote-panel .small-cap {
+    align-self: center;
+    justify-self: end;
+    width: 51mm;
+    margin: 0;
+    padding: 4mm 0 4mm 6mm;
+    border-top: 0;
+    border-left: 1px solid #739c8d80;
+    font-size: 2.9mm;
+    font-weight: 700;
+    line-height: 1.8;
+    color: #d7e9d5;
+    letter-spacing: .015em;
+}
+#page-02 .stacked-approach {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 4mm;
+    min-height: 0;
+}
+#page-02 .step-card {
+    align-items: center;
+    gap: 5mm;
+    min-width: 0;
+    min-height: 0;
+    padding: 5mm 6mm;
+    border: 1px solid #d4e3dc;
+    border-radius: 3.2mm;
+    background: #ffffff;
+}
+#page-02 .step-card > div {
+    flex: 1;
+    min-width: 0;
+}
+#page-02 .step-index {
+    flex: 0 0 13mm;
+    width: 13mm;
+    height: 13mm;
+    border-right: 0;
+    border-radius: 2mm;
+    background: #e8f1e9;
+    font-size: 4.6mm;
+    color: #236c63;
+}
+#page-02 .step-card strong {
+    font-size: 3.3mm;
+    line-height: 1.4;
+    letter-spacing: .01em;
+}
+#page-02 .step-card p {
+    margin-top: 2mm;
+    font-size: 2.95mm;
+    line-height: 1.62;
+    color: #607872;
+}
+
 .project-index-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-rows: repeat(2,1fr); gap: 4mm; flex: 1; min-height: 0; }
 .project-index-card { display: flex; flex-direction: column; background: #17373a; border: 1px solid #5e79764c; padding: 6.5mm; border-radius: 3.2mm; position: relative; overflow: hidden; }
 .project-index-card:nth-child(2), .project-index-card:nth-child(3) { background: #1d3e3d; }
