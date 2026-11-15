@@ -674,6 +674,72 @@
     margin-bottom: .25mm;
 }
 
+/* Page 09: SurveyLens retrospective — short single-line lessons. */
+#page-09 .survey-retrospective-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 4mm 5mm;
+}
+#page-09 .survey-retrospective-panel .micro {
+    flex: none;
+}
+#page-09 .survey-retrospective-lead {
+    flex: none;
+    margin: 2.2mm 0 2.5mm;
+    font-size: 3.55mm;
+    line-height: 1.45;
+    color: #c8ded5;
+    word-break: keep-all;
+}
+#page-09 .survey-retrospective-lead strong {
+    color: #d8f39d;
+    font-weight: 800;
+}
+#page-09 .survey-retrospective-list {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+#page-09 .survey-retrospective-item {
+    display: grid;
+    grid-template-columns: 7mm minmax(0, 1fr);
+    gap: 2mm;
+    align-items: center;
+    min-height: 0;
+    padding: .5mm 0;
+    border-top: 1px solid #73958c66;
+}
+#page-09 .survey-retrospective-item > span {
+    font: 800 3.2mm "Pretendard Variable", sans-serif;
+    color: #d8f39d;
+}
+#page-09 .survey-retrospective-item p {
+    margin: 0;
+    font-size: 3.38mm;
+    line-height: 1.28;
+    color: #c8ded5;
+    white-space: nowrap;
+}
+#page-09 .survey-retrospective-item strong {
+    display: block;
+    margin-bottom: .3mm;
+    font-size: 3.55mm;
+    color: #f5f8f0;
+    font-weight: 800;
+}
+#page-09 .survey-retrospective-note {
+    flex: none;
+    margin: 1.4mm 0 0;
+    padding-top: 1.4mm;
+    border-top: 1px solid #73958c66;
+    font-size: 2.8mm;
+    line-height: 1.35;
+    color: #a9c4c1;
+    word-break: keep-all;
+}
+
 @media screen {
     .editorial-page { box-shadow: 0 7mm 18mm #00000027; }
     .page-wrap { margin-bottom: calc(18px * var(--page-scale)); }
