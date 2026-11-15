@@ -202,6 +202,86 @@
 .project-index-card p { margin: 0; font-size: 3mm; line-height: 1.6; color: #c3d5cf; }
 .index-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 4mm; border-top: 1px solid #97b0a054; color: #95b3a9; font-size: 2.5mm; }
 .index-foot b { color: #d1ed97; font: 800 2.9mm Arial; }
+
+/* Live project screenshots. The hover area never grows: the zoom layer ignores
+   pointer events, so leaving the ORIGINAL mockup instantly restores its size. */
+.project-preview {
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d4dfd7;
+    border-radius: 3.5mm;
+    background: #ffffff;
+    overflow: visible;
+    box-shadow: 0 4mm 11mm #2e5b5521;
+}
+.project-preview-frame {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 3.3mm;
+    background: #f3f5f3;
+}
+.project-preview-frame img,
+.project-preview-zoom img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+.project-preview-hint {
+    position: absolute;
+    left: 3mm;
+    bottom: 3mm;
+    padding: 1.7mm 2.5mm;
+    color: #f7f9f5;
+    background: #102b2fdc;
+    border-radius: 1.5mm;
+    font: 700 2.2mm/1.2 Arial, sans-serif;
+    letter-spacing: .04em;
+}
+.project-preview-zoom {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform-origin: right center;
+    transform: scale(1);
+    transition: opacity 190ms ease, transform 190ms ease, visibility 190ms;
+    border: 1px solid #b4cabd;
+    border-radius: 3.5mm;
+    background: white;
+    box-shadow: 0 8mm 24mm #0e282a55;
+}
+@media screen and (hover: hover) and (pointer: fine) {
+    .project-preview:hover,
+    .project-preview:focus-within {
+        z-index: 50;
+    }
+    .project-preview:hover .project-preview-zoom,
+    .project-preview:focus-within .project-preview-zoom {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.48);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .project-preview-zoom { transition: none; }
+}
+@media print {
+    .project-preview { box-shadow: none; }
+    .project-preview-hint, .project-preview-zoom { display: none!important; }
+}
+
 /* project intro pages */
 .case-layout { flex: 1; max-height: 87mm; min-height: 0; }
 .case-copy { padding: 2mm 1.5mm 0 0; display: flex; flex-direction: column; }
