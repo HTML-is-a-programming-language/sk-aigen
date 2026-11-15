@@ -119,6 +119,58 @@ try {
         throw new Error('Page 05 retrospective lead must render in exactly two lines');
     }
 
+    const requestedCopyLayout = await page.evaluate(() => {
+        const selectors = [
+            '#page-06 .case-copy > .lead-copy', '#page-06 .accent-box p',
+            '#page-07 .careflow-row-list .case-row p',
+            '#page-07 .careflow-retrospective-lead',
+            '#page-07 .careflow-retrospective-item p',
+            '#page-08 .case-copy .body-sm', '#page-08 .accent-box p',
+            '#page-09 .white-panel .body-sm',
+            '#page-10 .case-copy .body-sm', '#page-10 .accent-box p',
+            '#page-11 .beauty-incident-list .incident p',
+            '#page-11 .beauty-before-after p:last-child',
+            '#page-11 .beauty-watchdog',
+            '#page-12 .experience-steps p', '#page-12 .experience-insight',
+            '#page-12 .experience-sub'
+        ];
+        return selectors.flatMap((selector) =>
+            [...document.querySelectorAll(selector)].map((element) => {
+                const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+                const positions = [];
+                let node;
+                while ((node = walker.nextNode())) {
+                    if (!node.textContent.trim()) continue;
+                    const range = document.createRange();
+                    range.selectNodeContents(node);
+                    for (const rect of range.getClientRects()) {
+                        if (rect.width > 0.5 && rect.height > 0.5) positions.push(rect.top);
+                    }
+                }
+                positions.sort((a, b) => a - b);
+                const rowTops = [];
+                for (const top of positions) {
+                    if (!rowTops.some((existing) => Math.abs(existing - top) < 7)) rowTops.push(top);
+                }
+                return {
+                    page: element.closest('.page-wrap')?.id || element.closest('.page-wrap')?.querySelector('article')?.getAttribute('aria-label'),
+                    selector,
+                    lines: rowTops.length,
+                    overflows: element.scrollWidth > element.clientWidth + 2,
+                    text: element.textContent.trim().replace(/\s+/g, ' ').slice(0, 110)
+                };
+            })
+        );
+    });
+    console.log('REQUESTED_COPY_LINE_AUDIT:', JSON.stringify(requestedCopyLayout));
+    const invalidCopy = requestedCopyLayout.filter((item) =>
+        item.lines > 2 || item.lines === 0 || item.overflows ||
+        (item.selector === '#page-11 .beauty-before-after p:last-child' && item.lines !== 1)
+    );
+    if (invalidCopy.length) {
+        throw new Error('Requested copy line limits failed: ' + JSON.stringify(invalidCopy));
+    }
+
     const overflow = await page.evaluate(() =>
         Array.from(document.querySelectorAll('.editorial-page')).flatMap((article, index) => {
             const elements = [article.querySelector('.doc-content'), ...article.querySelectorAll('.panel, .project-index-card, .link-item, .experience-card, .fit-skill-card, .fit-project, .fit-contact')]
