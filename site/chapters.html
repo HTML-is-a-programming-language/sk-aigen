@@ -235,11 +235,15 @@
           <p class="body-sm">불만족 고객의 미탐을 줄이면 오경보가 증가할 수 있습니다. 어떤 오류 비용을 더 크게 볼지 담당자가 선택하도록 Recall·혼동행렬과 임계값을 함께 제시했습니다.</p>
           <div class="inline-stat"><b>0점 해석</b><span>‘최저 평가’와 ‘해당 없음’을 분리해 학습·신규 예측에 동일 반영</span></div>
         </div>
-        <div class="panel ink-panel">
-          <div class="micro muted-lime">PRIVACY &amp; CAUSALITY</div>
-          <h3 class="light-heading">AI가 넘지 말아야 할 선</h3>
-          <p class="body-sm soft">원본 설문 행 대신 서명한 집계 근거만 GPT로 전달합니다. 그룹 점수 차이는 <strong>개선 효과가 아닌 점검 가설</strong>로 표시하고, 시범 실험을 통해 검증하도록 설계했습니다.</p>
-          <p class="caution on-dark">19,278건 실험과 웹 체험용 800건은 별개의 표본입니다. 실제 고객 만족도 개선 효과는 측정하지 않았습니다.</p>
+        <div class="panel ink-panel survey-retrospective-panel">
+          <div class="micro muted-lime">RETROSPECTIVE / LESSONS LEARNED</div>
+          <p class="survey-retrospective-lead">높은 정확도보다 중요한 것은 <strong>어떤 고객의 불만을 놓치는지</strong> 확인하는 일이었습니다.</p>
+          <div class="survey-retrospective-list">
+            <div class="survey-retrospective-item"><span>01</span><p><strong>정확도만으로 판단하지 않기</strong>불만족 미탐과 오경보를 함께 확인했습니다.</p></div>
+            <div class="survey-retrospective-item"><span>02</span><p><strong>분석 결과를 효과로 단정하지 않기</strong>집단별 차이는 검증할 가설로 남겼습니다.</p></div>
+            <div class="survey-retrospective-item"><span>03</span><p><strong>원본 데이터의 전달 범위 제한하기</strong>원본 설문 대신 집계 근거만 AI에 전달했습니다.</p></div>
+          </div>
+          <p class="survey-retrospective-note">실험 19,278건과 웹 체험 800건은 별개이며, 실제 만족도 개선 효과는 측정하지 않았습니다.</p>
         </div>
       </div>
     </div>
