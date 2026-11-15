@@ -1,4 +1,4 @@
-# SK AIGEN · 14페이지 포트폴리오 구성 및 근거
+# SK AIGEN · 13페이지 포트폴리오 구성 및 근거
 
 2026-11-14 · 서승준 · 지원용 웹 / PDF 공통 구성
 
@@ -6,20 +6,21 @@
 
 | 페이지 | 역할 | 중심 내용 |
 |---|---|---|
-| 01 | Cover | 기존 디자인 유지, 가치 제안과 지원자 소개 |
-| 02 | About | 약 4년 웹 개발 + KT AIVLE AI 트랙, DEFINE→DECIDE→BUILD→VERIFY |
-| 03 | Contents | 4개 프로젝트의 문제와 링크 |
-| 04 | CareFlow · 제품 | 근거 있는 고객지원, RAG/CRAG/Self-RAG, 보류 |
-| 05 | CareFlow · 검증 | 10/16→16/16 근거 검색, 원본 CSV 9/9, 부정 질문 8/8 |
-| 06 | SurveyLens · 제품 | 업로드→예측→개선 가설, 원본에서 추출한 800건 샘플 |
-| 07 | SurveyLens · 검증 | 원본 19,278건 홀드아웃, 불만족 Recall 및 오경보 |
-| 08 | LectureForge · 제품 | PDF→Writer→Reviewer→사람 승인→TTS→MP4 |
-| 09 | LectureForge · 검증 | 실제 1페이지 1회 E2E, 17.26초, 모의 AI 브라우저 QA 12건 |
-| 10 | BeautyRanks · 제품 | 성분표 근거 정량 계산 + GPT 설명, 수집/제휴링크 |
-| 11 | BeautyRanks · 운영 | 502 재시도, 403 접근 거부 중단, 체크포인트 복구 |
-| 12 | Engineering | 근거/검증, 사람의 최종 판단, 실패 후 복구 |
-| 13 | Why SK AIGEN | 창업·비즈니스 1지망, 사회·공공·교육 2지망 |
-| 14 | Evidence | 운영 웹 4개, 소스 코드와 QA 링크 |
+| 01 | Cover | 문제를 발견하고 제품으로 개선하는 개발자 |
+| 02 | About | 웹 개발 경험·KT AIVLE, DEFINE→DECIDE→BUILD→VERIFY |
+| 03 | Projects | LectureForge, CareFlow AI, SurveyLens, BeautyRanks |
+| 04 | LectureForge · 제품 | PDF 대본 생성, Writer·Reviewer·사람 승인 |
+| 05 | LectureForge · 검증 | 실제 3페이지 샘플 영상 생성·다운로드 및 회고 |
+| 06 | CareFlow · 제품 | 근거 있는 고객지원, 답변 보류 및 관리자 보완 |
+| 07 | CareFlow · 검증 | 근거 검색 오류 개선, Top-1 근거 회귀 검증과 회고 |
+| 08 | SurveyLens · 제품 | 설문 기반 고객 만족도 예측, 개선 가설 |
+| 09 | SurveyLens · 검증 | 정확도·불만족 Recall·미탐·오경보 비교 및 회고 |
+| 10 | BeautyRanks · 제품 | 개인 화장품 선택 경험에서 출발한 성분 비교 서비스 |
+| 11 | BeautyRanks · 개선 | 성분 점수 근거와 AI 설명 누락 복원·테스트·회고 |
+| 12 | Growth & Collaboration | KT AIVLE 아이데이션 방향 조정, 검색 실패 복구, HITL 적용 |
+| 13 | Role Fit & Contact | 직무 적용 역량, 프로젝트 서비스·코드, GitHub·Velog |
+
+**협업 표현 기준:** 아이데이션은 코치의 데이터 확보·실현 가능성 피드백을 바탕으로 팀 방향을 재검토한 사례다. 확인되지 않은 팀원 간 언쟁·직접 설득·개인 기여 비율은 서술하지 않는다.
 
 ## 사용한 프로젝트 원본
 
@@ -73,5 +74,5 @@
 - 표지 및 웹 컨테이너: site/index.html
 - 디자인: site/assets/styles.css 및 site/assets/editorial.css
 - PDF 출력: pnpm pdf
-- CI: portfolio-checks.yml에서 14페이지, 글자 출력, 레이아웃 넘침을 검증
+- CI: portfolio-checks.yml에서 13페이지, 글자 출력, 레이아웃 넘침을 검증
 - 배포: pages.yml에서 웹·PDF 동일 소스를 공개
