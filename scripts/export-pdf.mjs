@@ -104,6 +104,32 @@ try {
     });
     console.log('TEXT_LINE_AUDIT:', JSON.stringify(lineAudit));
 
+    if (lineAudit.length && process.env.STRICT_PORTFOLIO_LAYOUT === '1') {
+        throw new Error('Portfolio contains text exceeding two lines or its allotted width');
+    }
+    // Review natural two-line wraps so editorial break points can be explicit.
+    const naturalTwoLineWraps = await page.evaluate(() =>
+        [...document.querySelectorAll('.editorial-page p, .editorial-page h2, .editorial-page h3, .editorial-page .side-intro, .editorial-page .right-caption')]
+            .filter((el) => !el.querySelector('br') && getComputedStyle(el.querySelector('strong') || el).display !== 'block')
+            .flatMap((el) => {
+                const range = document.createRange();
+                range.selectNodeContents(el);
+                const positions = [...range.getClientRects()]
+                    .filter((r) => r.width > 0.5 && r.height > 0.5)
+                    .map((r) => r.top)
+                    .sort((a, b) => a - b);
+                const rows = [];
+                for (const top of positions) {
+                    if (!rows.length || top - rows[rows.length - 1] > 7) rows.push(top);
+                }
+                if (rows.length !== 2) return [];
+                const text = el.textContent.trim().replace(/\s+/g, ' ');
+                return [{page: el.closest('.page-wrap')?.querySelector('.doc-foot span:last-child')?.textContent?.trim(), className: el.className, tag: el.tagName, text: text.slice(0, 135)}];
+            })
+    );
+    console.log('NATURAL_TWO_LINE_WRAPS:', JSON.stringify(naturalTwoLineWraps));
+
+
     const pageCount = await page.locator('article.page').count();
     if (pageCount !== 13) {
         throw new Error('Expected 13 A4 pages but rendered ' + pageCount);
