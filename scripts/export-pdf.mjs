@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { readFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -15,13 +15,24 @@ const html = readFileSync(htmlPath, 'utf8');
 const css = readFileSync(cssPath, 'utf8');
 const editorial = readFileSync(editorialPath, 'utf8');
 const chapters = readFileSync(chaptersPath, 'utf8');
-const markup = html
+let markup = html
     .replace('<link rel="stylesheet" href="./assets/styles.css">', '<style>' + css + '</style>')
     .replace('<link rel="stylesheet" href="./assets/editorial.css">', '<style>' + editorial + '</style>')
     .replace(
         '<div id="portfolio-chapters" aria-label="프로젝트 및 포트폴리오 본문"></div>',
         '<div id="portfolio-chapters" aria-label="프로젝트 및 포트폴리오 본문">' + chapters + '</div>'
     );
+
+// Inline checked-in production screenshots for Playwright setContent(), whose
+// blank-document origin cannot resolve relative screenshot paths during PDF export.
+for (const filename of ['instructor.png', 'support.png', 'survey.png', 'beauty.png']) {
+    const file = resolve(repoRoot, 'site/assets/project-previews', filename);
+    if (!existsSync(file)) {
+        throw new Error('Project screenshot is missing: ' + filename + '. Run pnpm capture:previews first.');
+    }
+    const dataUrl = 'data:image/png;base64,' + readFileSync(file).toString('base64');
+    markup = markup.replaceAll('src="./assets/project-previews/' + filename + '"', 'src="' + dataUrl + '"');
+}
 
 mkdirSync(dirname(target), { recursive: true });
 const browser = await chromium.launch({ headless: true });
