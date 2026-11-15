@@ -813,8 +813,8 @@
 #page-11 .beauty-before-after {
     flex: none;
     display: grid;
-    grid-template-columns: 12mm minmax(0, 1fr) 5mm 12mm minmax(0, 1fr);
-    gap: 1.5mm;
+    grid-template-columns: 10mm 23mm 3mm 10mm minmax(0, 1fr);
+    gap: 1mm;
     align-items: center;
     margin-top: 2.4mm;
     padding: 2.2mm 2.6mm;
@@ -832,6 +832,10 @@
     line-height: 1.26;
     color: #3d6664;
     word-break: keep-all;
+}
+#page-11 .beauty-before-after p:last-child {
+    white-space: nowrap;
+    letter-spacing: -.025em;
 }
 #page-11 .beauty-before-after > b {
     font-size: 4mm;
