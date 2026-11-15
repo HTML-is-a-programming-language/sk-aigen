@@ -226,8 +226,19 @@ try {
         const inspect = (selector) => {
             const el = document.querySelector(selector);
             const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
+            const range = document.createRange();
+            range.selectNodeContents(el);
+            const lineTops = [...range.getClientRects()]
+                .filter((rect) => rect.width > 0.5)
+                .map((rect) => rect.top);
+            const uniqueLines = [];
+            for (const top of lineTops) {
+                if (!uniqueLines.some((seen) => Math.abs(top - seen) < 5)) uniqueLines.push(top);
+            }
             return {
-                lines: Math.round(el.getBoundingClientRect().height / lineHeight),
+                lines: Number.isFinite(lineHeight)
+                    ? Math.round(el.getBoundingClientRect().height / lineHeight)
+                    : uniqueLines.length,
                 overflow: el.scrollWidth > el.clientWidth + 2
             };
         };
