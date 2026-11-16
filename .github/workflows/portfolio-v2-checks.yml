@@ -1,0 +1,35 @@
+name: Check isolated portfolio V2 layout
+on:
+    push:
+        branches: [main]
+        paths:
+            - site/portfolio-v2.html
+            - site/chapters-v2.html
+            - site/assets/portfolio-v2.css
+            - site/assets/editorial-v2.css
+            - scripts/check-portfolio-v2.mjs
+            - .github/workflows/portfolio-v2-checks.yml
+    workflow_dispatch:
+permissions:
+    contents: read
+jobs:
+    v2-layout:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - run: pnpm install --no-frozen-lockfile
+            - run: pnpm exec playwright install --with-deps chromium
+            - run: node scripts/check-portfolio-v2.mjs
+            - name: Save V2 screenshots
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: portfolio-v2-layout-screenshots
+                  path: v2-qa/*.png
+                  if-no-files-found: ignore
