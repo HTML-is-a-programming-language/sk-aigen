@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0D1E22">
+    <meta name="description" content="서승준 | SK AIGEN 지원 포트폴리오 확장판 — 문제 정의, 역할, 판단, 결과와 검증 근거.">
+    <title>서승준 — SK AIGEN 포트폴리오 확장판</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/editorial.css">
+    <link rel="stylesheet" href="./assets/portfolio-v2.css">
+</head>
+<body>
+    <main id="portfolio" aria-label="SK AIGEN 포트폴리오">
+        <div class="page-wrap">
+            <article class="page cover" aria-label="1페이지: 포트폴리오 표지">
+                <div class="cover-grid" aria-hidden="true"></div>
+                <div class="corner-number" aria-hidden="true">01</div>
+                <header class="cover-header">
+                    <div class="brand"><span class="brand-caption">PORTFOLIO</span></div>
+                    <div class="edition"><span class="edition-ring"></span> SK AIGEN <span class="edition-sep">/</span> 1기 지원</div>
+                </header>
+                <section class="hero">
+                    <h1>사용자의 눈높이에서<br>불편함을 발견하고<br><span class="headline-accent">편리함으로 바꿉니다<span class="period">.</span></span></h1>
+                </section>
+                <section class="figure" aria-label="문제 정의, 구현, 검증의 세 단계 과정">
+                    <div class="figure-top"><span>HOW I APPROACH A PROBLEM</span></div>
+                    <div class="figure-line figure-line-1" aria-hidden="true"></div>
+                    <div class="figure-line figure-line-2" aria-hidden="true"></div>
+                    <div class="orbit orbit-a" aria-hidden="true"></div>
+                    <div class="orbit orbit-b" aria-hidden="true"></div>
+                    <div class="orbit orbit-c" aria-hidden="true"></div>
+                    <div class="orbit-cross orbit-cross-x" aria-hidden="true"></div>
+                    <div class="orbit-cross orbit-cross-y" aria-hidden="true"></div>
+                    <div class="center-node" aria-hidden="true"><div class="center-text">TURN<br>IDEAS INTO<br>EVIDENCE</div></div>
+                    <div class="step step-one"><span class="step-count">01 / DEFINE</span><span class="step-title">문제 발견</span><span class="step-sub">WHY THIS PROBLEM</span></div>
+                    <div class="step step-two"><span class="step-count">02 / BUILD</span><span class="step-title">해결 구현</span><span class="step-sub">HOW TO EXECUTE</span></div>
+                    <div class="step step-three"><span class="step-count">03 / VERIFY</span><span class="step-title">결과 검증</span><span class="step-sub">WHAT CHANGED</span></div>
+                    <div class="figure-bottom">THINK <span>→</span> BUILD <span>→</span> LEARN</div>
+                </section>
+                <footer class="cover-footer">
+                    <div class="footer-identity"><div class="identity-name">서승준 <span class="identity-en">SEO SEUNG JUN</span></div></div>
+                    <div class="footer-contact">
+                        <div class="contact-row"><span class="contact-label">GITHUB</span><a class="contact-value" href="https://github.com/HTML-is-a-programming-language" target="_blank" rel="noopener noreferrer">github.com/HTML-is-a-programming-language</a></div>
+                        <div class="contact-row"><span class="contact-label">VELOG</span><a class="contact-value" href="https://velog.io/@dev_alchemist/posts" target="_blank" rel="noopener noreferrer">velog.io/@dev_alchemist/posts</a></div>
+                    </div>
+                    <div class="footer-year">2026<br><span>PORTFOLIO / 01 OF 17</span></div>
+                </footer>
+                <div class="cover-edge" aria-hidden="true"></div>
+            </article>
+        </div>
+        <div id="portfolio-chapters" aria-label="프로젝트 및 포트폴리오 본문"></div>
+    </main>
+    <script>
+        (() => {
+            const root = document.documentElement;
+            function resize() {
+                const availableWidth = Math.max(300, window.innerWidth - 36);
+                const scale = Math.min(1, availableWidth / (297 * 96 / 25.4));
+                root.style.setProperty('--page-scale', String(scale));
+            }
+            window.addEventListener('resize', resize, { passive: true });
+            resize();
+            const mount = document.getElementById('portfolio-chapters');
+            if (!mount.children.length) {
+                fetch('./chapters-v2.html', { cache: 'no-cache' })
+                    .then((response) => {
+                        if (!response.ok) throw new Error('본문을 불러올 수 없습니다.');
+                        return response.text();
+                    })
+                    .then((html) => { mount.innerHTML = html; })
+                    .catch(() => {
+                        mount.innerHTML = '<div class="load-error" role="alert">포트폴리오 본문을 불러올 수 없습니다. 다시 새로고침하거나 PDF를 확인해 주세요.</div>';
+                    });
+            }
+        })();
+    </script>
+</body>
+</html>
