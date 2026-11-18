@@ -169,3 +169,32 @@
 #page-03 .project-index-card:nth-child(2):hover { background:#20584c; }
 #page-03 .project-index-card:nth-child(3):hover { background:#244e85; }
 #page-03 .project-index-card:nth-child(4):hover { background:#6c3754; }
+
+
+/* V2 record page: separate actual activities into readable, compact rows. */
+.project-theme .record-card .record-activities {
+    display: grid;
+    gap: 1.7mm;
+    line-height: 1.34;
+}
+.project-theme .record-card .activity-group {
+    display: grid;
+    gap: .65mm;
+    min-width: 0;
+}
+.project-theme .record-card .activity-group + .activity-group {
+    border-top: 1px solid var(--theme-rule);
+    padding-top: 1.5mm;
+}
+.project-theme .record-card .activity-group strong {
+    display: block;
+    font-size: 3mm;
+    line-height: 1.25;
+    color: var(--theme-primary);
+}
+.project-theme .record-card .activity-group > span {
+    display: block;
+    font-size: 3.05mm;
+    color: var(--theme-ink);
+    word-break: keep-all;
+}
